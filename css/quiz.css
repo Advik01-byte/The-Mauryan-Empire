@@ -1,0 +1,22 @@
+/* Quiz and score counter */
+/* ---------- Quiz ---------- */
+.quiz{counter-reset:score;max-width:760px;margin:30px auto 0}
+.q{border:2px solid var(--line);border-radius:8px;padding:20px 22px;margin-bottom:18px;background:var(--bg2);transition:.3s}
+.q:hover{border-color:var(--gold)}
+.q legend{font-family:'Cinzel',serif;font-size:1.02rem;color:var(--gold);padding:0 10px;letter-spacing:.04em}
+.q label{display:block;margin:8px 0;padding:10px 16px;border:1px solid var(--line);border-radius:6px;cursor:pointer;transition:.25s;font-size:1.05rem}
+.q label:hover{border-color:var(--gold);transform:translateX(6px);background:rgba(212,169,55,.1)}
+.q input.ok:checked + label{border-color:#6bbf8a;background:rgba(79,138,117,.35);transform:translateX(6px)}
+.q input.no:checked + label{border-color:#d36a5c;background:rgba(154,49,38,.4);text-decoration:line-through;text-decoration-color:rgba(255,255,255,.4)}
+.q input:focus-visible + label{outline:2px solid var(--gold)}
+.q .good,.q .bad{display:none;margin-top:10px;padding:10px 14px;border-radius:5px;font-size:1rem;animation:fadein .4s both}
+.q .good{background:rgba(79,138,117,.25);border-left:4px solid #6bbf8a}
+.q .bad{background:rgba(154,49,38,.25);border-left:4px solid #d36a5c}
+.q input.ok:checked ~ .good{display:block}
+.q input.no:checked ~ .bad{display:block}
+.quiz input.ok:checked{counter-increment:score}
+.score{text-align:center;font-family:'Cinzel',serif;font-size:1.5rem;color:var(--gold);padding:24px;border:3px double var(--gold);
+  border-radius:10px;background:var(--bg2);box-shadow:0 0 30px var(--glow)}
+.score::after{content:counter(score) " / 6";color:var(--ink);font-size:2.4rem;display:block;margin-top:4px}
+.score small{display:block;font-family:'IM Fell English',serif;font-size:.95rem;color:var(--muted);margin-top:4px}
+

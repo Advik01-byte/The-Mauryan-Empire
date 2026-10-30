@@ -1,0 +1,19 @@
+/* Timeline of the empire */
+/* ---------- Timeline ---------- */
+.tl{position:relative;max-width:940px;margin:40px auto 0}
+.tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;transform:translateX(-50%);
+  background:linear-gradient(var(--gold),var(--crimson),var(--gold));border-radius:2px}
+.ev{position:relative;width:50%;padding:0 44px 38px 0}
+.ev:nth-child(even){margin-left:50%;padding:0 0 38px 44px}
+.ev::after{content:"☸";position:absolute;top:10px;right:-18px;width:36px;height:36px;border-radius:50%;
+  display:grid;place-items:center;background:var(--bg);border:3px solid var(--gold);color:var(--gold);font-size:1.1rem;
+  transition:.4s}
+.ev:nth-child(even)::after{right:auto;left:-18px}
+.ev:hover::after{background:var(--gold);color:#120e09;transform:rotate(180deg) scale(1.2);box-shadow:0 0 22px var(--glow)}
+.card{background:var(--bg2);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:6px;
+  padding:16px 20px;transition:.35s;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.ev:hover .card{transform:translateY(-6px) scale(1.02);box-shadow:0 14px 32px rgba(0,0,0,.5),0 0 24px var(--glow);border-left-color:var(--crimson)}
+.yr{font-family:'Cinzel',serif;color:var(--gold);font-size:.95rem;letter-spacing:.12em}
+.card h3{font-size:1.15rem;margin:2px 0 6px;color:var(--ink)}
+.card p{font-size:1rem;color:var(--muted);line-height:1.5}
+

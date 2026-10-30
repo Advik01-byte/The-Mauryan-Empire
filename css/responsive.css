@@ -1,0 +1,14 @@
+/* Phone layout and reduced-motion. MUST load last. */
+/* ---------- Mobile ---------- */
+@media (max-width:760px){
+  .tl::before{left:20px}
+  .ev,.ev:nth-child(even){width:100%;margin-left:0;padding:0 0 30px 54px}
+  .ev::after,.ev:nth-child(even)::after{left:2px;right:auto}
+  .pn{grid-template-columns:1fr;padding:22px;text-align:center}
+  .pn ul{text-align:left}
+  .modal .box{grid-template-columns:1fr}
+  .modal svg.art{height:200px}
+  .chakra{--s:150px}
+  nav{padding:8px 12px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

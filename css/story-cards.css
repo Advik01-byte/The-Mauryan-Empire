@@ -1,0 +1,16 @@
+/* "The Big Picture" flip cards */
+/* ---------- Flip cards ---------- */
+.flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;margin-top:30px}
+.flip{perspective:1000px;height:240px;outline:none;cursor:pointer}
+.flip .in{position:relative;width:100%;height:100%;transition:transform .9s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.flip:hover .in,.flip:focus .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:22px;border-radius:8px;border:2px solid var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.face.front{background:linear-gradient(160deg,var(--bg2),var(--bg));}
+.face.front small{font-family:'Cinzel',serif;letter-spacing:.25em;color:var(--muted);font-size:.7rem}
+.face.front strong{font-family:'Cinzel',serif;font-size:1.9rem;color:var(--gold);margin:8px 0}
+.face.front em{font-size:.85rem;color:var(--muted)}
+.face.back{transform:rotateY(180deg);background:linear-gradient(160deg,var(--crimson),#4d1510);color:#f6e8c6;font-size:1.02rem;line-height:1.5}
+.face::before{content:"";position:absolute;inset:8px;border:1px dashed rgba(212,169,55,.5);border-radius:5px;pointer-events:none}
+

@@ -1,0 +1,67 @@
+/* =====================================================
+   THE MAURYAN EMPIRE — base styles
+   Colour variables (night / parchment), reset, fonts,
+   section titles and footer. Loaded first.
+   ===================================================== */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:#120e09}
+.sr{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+
+/* ---------- Colour themes (night = default, lamp = daylight parchment) ---------- */
+.page{
+  --bg:#120e09; --bg2:#1e1710; --ink:#eadfc3; --muted:#b5a27a;
+  --gold:#d4a937; --crimson:#9a3126; --verd:#4f8a75; --line:#4b3a22;
+  --sea:#0e1a1c; --landc:#2a2013; --glow:rgba(212,169,55,.35);
+  min-height:100vh;color:var(--ink);
+  font-family:'IM Fell English',Georgia,'Times New Roman',serif;
+  font-size:1.15rem;line-height:1.65;
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(ellipse at 12% 0%,rgba(212,169,55,.13),transparent 50%),
+    radial-gradient(ellipse at 92% 100%,rgba(154,49,38,.16),transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .8 0 0 0 0 .65 0 0 0 0 .4 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  transition:background-color .6s,color .6s;
+  overflow-x:hidden;
+}
+#torch:checked ~ .page{
+  --bg:#e8dbb7; --bg2:#f4ebd0; --ink:#2a1c0d; --muted:#6b5535;
+  --gold:#8a6414; --crimson:#7a1f17; --verd:#2f6a55; --line:#a88a52;
+  --sea:#b8c8bd; --landc:#d6c28e; --glow:rgba(138,100,20,.25);
+}
+#torch:focus-visible ~ .page .lamp{outline:2px solid var(--gold);outline-offset:3px}
+
+h1,h2,h3,h4,.cin{font-family:'Cinzel','Trajan Pro',Georgia,serif;font-weight:700}
+a{color:var(--gold)}
+section{padding:90px 22px 40px;max-width:1100px;margin:0 auto}
+
+/* ---------- Scroll progress bar (works in newer browsers) ---------- */
+.progress{position:fixed;top:0;left:0;height:4px;width:100%;z-index:200;
+  background:linear-gradient(90deg,var(--crimson),var(--gold));
+  transform:scaleX(0);transform-origin:left}
+@supports (animation-timeline:scroll()){
+  .progress{animation:grow linear both;animation-timeline:scroll(root)}
+  @keyframes grow{to{transform:scaleX(1)}}
+}
+
+/* ---------- Scroll reveal ---------- */
+@supports (animation-timeline:view()){
+  .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 85%}
+  @keyframes rise{from{opacity:0;transform:translateY(46px)}to{opacity:1;transform:none}}
+}
+
+/* ---------- Section titles ---------- */
+.title{text-align:center;margin-bottom:12px}
+.title h2{font-size:clamp(1.6rem,4.5vw,2.6rem);color:var(--gold);letter-spacing:.14em;text-transform:uppercase;
+  display:flex;align-items:center;gap:18px;justify-content:center}
+.title h2::before,.title h2::after{content:"";flex:1;max-width:120px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold))}
+.title h2::after{transform:scaleX(-1)}
+.title p{color:var(--muted);font-style:italic;margin-top:6px}
+.lead{max-width:760px;margin:0 auto 34px;text-align:center}
+
+/* ---------- Footer ---------- */
+footer{margin-top:60px;padding:40px 22px;text-align:center;border-top:3px double var(--gold);background:rgba(0,0,0,.25);color:var(--muted);font-size:.98rem}
+footer .cin{color:var(--gold);font-size:1.1rem;letter-spacing:.12em}
+footer p{max-width:700px;margin:8px auto}
+

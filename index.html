@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Mauryan Empire — India's First Great Empire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+<!-- Styles: one file per section. Order matters: base first, responsive last. -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/navigation.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/story-cards.css">
+<link rel="stylesheet" href="css/timeline.css">
+<link rel="stylesheet" href="css/rulers.css">
+<link rel="stylesheet" href="css/map.css">
+<link rel="stylesheet" href="css/life.css">
+<link rel="stylesheet" href="css/edicts.css">
+<link rel="stylesheet" href="css/treasure.css">
+<link rel="stylesheet" href="css/handbook.css">
+<link rel="stylesheet" href="css/legacy.css">
+<link rel="stylesheet" href="css/quiz.css">
+<link rel="stylesheet" href="css/about.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+<!-- Lamp switch (a checkbox!). Must stay right before .page so CSS can reach it. -->
+<input type="checkbox" id="torch" class="sr" aria-label="Light the lamp: switch to parchment mode">
+
+<!-- Reusable drawings (defined once, used many times) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="stone" x1="0" x2="1">
+      <stop offset="0" stop-color="#a98a5a"/><stop offset=".5" stop-color="#e0c88f"/><stop offset="1" stop-color="#8d7145"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e8e8e2"/><stop offset=".5" stop-color="#a9a9a2"/><stop offset="1" stop-color="#d4d4cc"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Stylised Mauryan pillar -->
+  <symbol id="pillar" viewBox="0 0 200 400">
+    <rect x="78" y="165" width="44" height="215" fill="url(#stone)"/>
+    <rect x="62" y="372" width="76" height="18" rx="3" fill="#7a6038"/>
+    <path d="M66 165 Q100 195 134 165 L124 138 L76 138 Z" fill="url(#stone)" stroke="#6a5230" stroke-width="2"/>
+    <rect x="58" y="116" width="84" height="22" rx="4" fill="url(#stone)" stroke="#6a5230" stroke-width="2"/>
+    <g fill="#6a5230"><circle cx="72" cy="127" r="4"/><circle cx="90" cy="127" r="4"/><circle cx="110" cy="127" r="4"/><circle cx="128" cy="127" r="4"/></g>
+    <rect x="62" y="62" width="76" height="54" rx="26" fill="url(#stone)" stroke="#6a5230" stroke-width="2"/>
+    <circle cx="74" cy="66" r="15" fill="url(#stone)" stroke="#6a5230" stroke-width="2"/>
+    <circle cx="126" cy="66" r="15" fill="url(#stone)" stroke="#6a5230" stroke-width="2"/>
+    <circle cx="100" cy="58" r="16" fill="url(#stone)" stroke="#6a5230" stroke-width="2"/>
+    <g fill="#3a2d18"><circle cx="95" cy="56" r="2.5"/><circle cx="105" cy="56" r="2.5"/><circle cx="69" cy="64" r="2.2"/><circle cx="79" cy="64" r="2.2"/><circle cx="121" cy="64" r="2.2"/><circle cx="131" cy="64" r="2.2"/></g>
+    <path d="M92 66 Q100 74 108 66" stroke="#3a2d18" stroke-width="2.5" fill="none"/>
+  </symbol>
+
+  <!-- Punch-marked silver coin -->
+  <symbol id="coin" viewBox="0 0 200 200">
+    <rect x="18" y="48" width="164" height="104" rx="24" fill="url(#silver)" stroke="#5c5c55" stroke-width="3"/>
+    <g fill="none" stroke="#3b3b36" stroke-width="3.5" stroke-linecap="round">
+      <circle cx="62" cy="88" r="9" fill="#3b3b36"/>
+      <circle cx="62" cy="88" r="17" stroke-dasharray="3 6"/>
+      <circle cx="140" cy="88" r="14"/>
+      <path d="M140 74V102M126 88H154M130 78L150 98M150 78L130 98"/>
+      <path d="M44 132Q54 108 63 122Q70 106 82 132Z" fill="#3b3b36"/>
+      <path d="M90 118a9 9 0 1 0 0 16a7 7 0 1 1 0-16Z" fill="#3b3b36"/>
+      <path d="M140 134V112M128 120Q140 104 152 120"/>
+      <rect x="124" y="126" width="32" height="10"/>
+    </g>
+  </symbol>
+</svg>
+
+<div class="progress"></div>
+
+<div class="page">
+
+<!-- ================= NAV ================= -->
+<nav>
+  <a class="burger" href="#menu" aria-label="Open the menu">
+    <span class="bars"><i></i><i></i><i></i></span><span class="burger-text">Menu</span>
+  </a>
+  <a class="brand" href="#top">The Mauryan Empire</a>
+  <label class="lamp" for="torch">Light the lamp</label>
+</nav>
+
+<!-- ================= OVERLAY MENU (opens with :target, no JavaScript) ================= -->
+<span class="anchor" id="closed"></span>
+<div class="menu" id="menu">
+  <a class="menu-back" href="#closed" aria-label="Close the menu"></a>
+  <div class="menu-box">
+    <a class="menu-close" href="#closed">✕ Close</a>
+    <div class="chakra spin menu-chakra" role="img" aria-label="Ashoka Chakra"></div>
+    <h2>Explore the Empire</h2>
+    <p class="menu-sub">Choose where to go</p>
+    <ul>
+      <li style="--i:0"><a href="#top"><span>01</span>Home</a></li>
+      <li style="--i:1"><a href="#story"><span>02</span>The Big Picture</a></li>
+      <li style="--i:2"><a href="#timeline"><span>03</span>Timeline</a></li>
+      <li style="--i:3"><a href="#rulers"><span>04</span>Three Rulers</a></li>
+      <li style="--i:4"><a href="#map"><span>05</span>Empire Map</a></li>
+      <li style="--i:5"><a href="#life"><span>06</span>Daily Life</a></li>
+      <li style="--i:6"><a href="#dhamma"><span>07</span>Edicts</a></li>
+      <li style="--i:7"><a href="#treasure"><span>08</span>Treasures</a></li>
+      <li style="--i:8"><a href="#handbook"><span>09</span>Handbook</a></li>
+      <li style="--i:9"><a href="#legacy"><span>10</span>Why It Matters</a></li>
+      <li style="--i:10"><a href="#quiz"><span>11</span>Quiz</a></li>
+      <li style="--i:11"><a href="#about"><span>12</span>About Us</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="chakra spin" role="img" aria-label="Ashoka Chakra with 24 spokes"></div>
+  <p class="eyebrow">c. 322 – 185 BCE &nbsp;·&nbsp; Pataliputra, Magadha</p>
+  <h1>The Mauryan <span>Empire</span></h1>
+  <p class="tag">How a young outsider, a brilliant teacher and a king who chose peace built India's first great empire.</p>
+  <a class="btn" href="#story">Begin the Journey</a>
+</header>
+
+<div class="ribbon" aria-hidden="true">
+  <div>
+    <b>☸</b> Ashoka's chakra has 24 spokes <b>☸</b> Pataliputra had 64 gates <b>☸</b> Chandragupta received 500 war elephants from Seleucus <b>☸</b> Ashoka's edicts were carved on rocks and pillars <b>☸</b> The Mauryan Empire lasted about 137 years
+    <b>☸</b> Ashoka's chakra has 24 spokes <b>☸</b> Pataliputra had 64 gates <b>☸</b> Chandragupta received 500 war elephants from Seleucus <b>☸</b> Ashoka's edicts were carved on rocks and pillars <b>☸</b> The Mauryan Empire lasted about 137 years
+  </div>
+</div>
+
+<!-- ================= STORY / FACT CARDS ================= -->
+<section id="story">
+  <div class="title reveal"><h2>The Big Picture</h2><p>Hover (or tap) each card to turn it over</p></div>
+  <p class="lead reveal">More than 2,300 years ago, northern India was divided into many kingdoms. The Mauryas united most of the subcontinent under one government for the first time. They built roads, cities and a powerful army, and one of their emperors, Ashoka, left messages on stone that we can still read today.</p>
+  <div class="flips reveal">
+    <div class="flip" tabindex="0"><div class="in">
+      <div class="face front"><small>FOUNDED</small><strong>c. 322 BCE</strong><em>Who started it?</em></div>
+      <div class="face back"><p>Chandragupta Maurya, guided by his teacher Chanakya (also called Kautilya), took over Magadha from the Nanda dynasty.</p></div>
+    </div></div>
+    <div class="flip" tabindex="0"><div class="in">
+      <div class="face front"><small>CAPITAL</small><strong>Pataliputra</strong><em>Where was it?</em></div>
+      <div class="face back"><p>It stood near where the Ganga and Son rivers meet. Today the city is called Patna, in Bihar.</p></div>
+    </div></div>
+    <div class="flip" tabindex="0"><div class="in">
+      <div class="face front"><small>GREATEST RULER</small><strong>Ashoka</strong><em>Why famous?</em></div>
+      <div class="face back"><p>After the terrible Kalinga War, Ashoka chose a path of peace, kindness and dhamma, and shared it across his empire.</p></div>
+    </div></div>
+    <div class="flip" tabindex="0"><div class="in">
+      <div class="face front"><small>BIGGEST SIZE</small><strong>≈ 5 million km²</strong><em>How large?</em></div>
+      <div class="face back"><p>At its height it stretched from Afghanistan in the northwest to Bengal in the east. Historians' estimates differ.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section id="timeline">
+  <div class="title reveal"><h2>Timeline of the Empire</h2><p>"c." means circa, or "around". Dates are approximate.</p></div>
+  <div class="tl">
+    <div class="ev reveal"><div class="card"><div class="yr">c. 322 BCE</div><h3>Chandragupta Takes Pataliputra</h3><p>With Chanakya's plans, Chandragupta defeats the Nanda king and becomes the first Mauryan emperor.</p></div></div>
+    <div class="ev reveal"><div class="card"><div class="yr">c. 305 BCE</div><h3>Face-off with Seleucus</h3><p>Seleucus, a general of Alexander, tries to win lands in the northwest. A treaty follows: Chandragupta gains territory and gives 500 war elephants.</p></div></div>
+    <div class="ev reveal"><div class="card"><div class="yr">c. 297 BCE</div><h3>Bindusara Becomes Emperor</h3><p>Chandragupta's son rules and pushes the empire further south into the Deccan.</p></div></div>
+    <div class="ev reveal"><div class="card"><div class="yr">c. 268 BCE</div><h3>Ashoka Takes the Throne</h3><p>Bindusara's son Ashoka becomes emperor and rules from Pataliputra.</p></div></div>
+    <div class="ev reveal"><div class="card"><div class="yr">c. 261 BCE</div><h3>The Kalinga War</h3><p>Ashoka conquers Kalinga (today's Odisha). His own edict says around 100,000 people were killed. He is filled with sorrow.</p></div></div>
+    <div class="ev reveal"><div class="card"><div class="yr">c. 250 BCE (tradition)</div><h3>Messengers of Peace</h3><p>Buddhist teachings travel to Sri Lanka and beyond. Tradition says Ashoka's son Mahinda and daughter Sanghamitta carried them.</p></div></div>
+    <div class="ev reveal"><div class="card"><div class="yr">c. 232 BCE</div><h3>Ashoka Dies</h3><p>After about 36 years of rule, the great emperor passes away. The empire slowly weakens.</p></div></div>
+    <div class="ev reveal"><div class="card"><div class="yr">c. 185 BCE</div><h3>The End of the Mauryas</h3><p>The last Mauryan king, Brihadratha, is killed by his army chief Pushyamitra Shunga, who starts the Shunga dynasty.</p></div></div>
+  </div>
+</section>
+
+<!-- ================= RULERS (tabs) ================= -->
+<section id="rulers">
+  <div class="title reveal"><h2>Three Great Rulers</h2><p>Click a name to meet each emperor</p></div>
+  <div class="tabs reveal">
+    <input class="sr" type="radio" name="ruler" id="r1" checked>
+    <input class="sr" type="radio" name="ruler" id="r2">
+    <input class="sr" type="radio" name="ruler" id="r3">
+    <div class="tabbar">
+      <label for="r1">Chandragupta</label><label for="r2">Bindusara</label><label for="r3">Ashoka</label>
+    </div>
+    <div class="panels">
+      <article class="pn p1">
+        <div class="seal"><div><b>I</b><span>THE FOUNDER</span></div></div>
+        <div>
+          <h3>Chandragupta Maurya</h3>
+          <div class="dates">RULED c. 322 – 297 BCE</div>
+          <p>The empire builder. With advice from Chanakya, he removed the Nanda dynasty, united the north and defended the northwest against Seleucus.</p>
+          <ul>
+            <li>Built a strong army and a spy network</li>
+            <li>Met Megasthenes, the Greek ambassador who wrote <i>Indica</i></li>
+            <li>Jain tradition says he gave up his throne late in life</li>
+          </ul>
+          <div class="fun"><b>Fun fact</b><br>Chandragupta's peace treaty with Seleucus included 500 war elephants, which later helped Seleucus in battle.</div>
+        </div>
+      </article>
+      <article class="pn p2">
+        <div class="seal"><div><b>II</b><span>THE EXPANDER</span></div></div>
+        <div>
+          <h3>Bindusara</h3>
+          <div class="dates">RULED c. 297 – 273 BCE</div>
+          <p>Chandragupta's son kept the empire strong and extended it far into the south. Greek writers called him "Amitrochates", which comes from a title meaning "slayer of enemies".</p>
+          <ul>
+            <li>Kept friendly links with Greek kingdoms in the west</li>
+            <li>Faced and settled rebellions in Taxila</li>
+            <li>Passed a huge, well-run empire to Ashoka</li>
+          </ul>
+          <div class="fun"><b>Fun fact</b><br>A story from the Greek writer Athenaeus says Bindusara asked a Greek king to send sweet wine, dried figs and a philosopher. He received the wine and figs, but the philosopher was "not for sale".</div>
+        </div>
+      </article>
+      <article class="pn p3">
+        <div class="seal"><div><b>III</b><span>THE PEACEMAKER</span></div></div>
+        <div>
+          <h3>Ashoka the Great</h3>
+          <div class="dates">RULED c. 268 – 232 BCE</div>
+          <p>After the Kalinga War, Ashoka felt deep regret. He turned to Buddhism and a rule of dhamma: kindness, honesty, respect and care for all living things.</p>
+          <ul>
+            <li>Carved messages on rocks and pillars across the land</li>
+            <li>Planted shade trees, dug wells and built rest houses</li>
+            <li>Called himself "Devanampiya Piyadasi", Beloved of the Gods</li>
+          </ul>
+          <div class="fun"><b>Fun fact</b><br>People forgot how to read Ashoka's Brahmi writing for centuries. In 1837, James Prinsep worked out the script, and Ashoka's name came back to life.</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAP ================= -->
+<section id="map">
+  <div class="title reveal"><h2>Watch the Empire Grow</h2><p>Choose a ruler, then hover over the glowing cities</p></div>
+  <div class="reveal">
+    <input class="sr" type="radio" name="era" id="m1" checked>
+    <input class="sr" type="radio" name="era" id="m2">
+    <input class="sr" type="radio" name="era" id="m3">
+    <div class="mapbtns">
+      <label for="m1">1 · Chandragupta</label><label for="m2">2 · Bindusara</label><label for="m3">3 · Ashoka</label>
+    </div>
+    <div class="mapbox">
+      <svg viewBox="0 0 600 650" role="img" aria-label="Stylised map of the Mauryan Empire growing under three rulers">
+        <path class="land" d="M60 60 L250 28 L360 55 L520 105 L500 205 L470 262 L430 335 L405 420 L360 520 L300 618 L240 520 L200 420 L168 335 L90 310 L108 245 L68 222 L50 150 Z"/>
+        <polygon class="reg reg1" points="52,60 250,30 360,57 518,106 498,205 468,260 338,318 180,340 92,310 108,246 68,222 50,150"/>
+        <polygon class="reg reg2" points="180,340 338,318 392,362 384,448 336,506 262,502 208,428 170,340"/>
+        <polygon class="reg reg3" points="338,318 468,262 480,296 430,338 404,420 384,448 392,362"/>
+        <path class="road" d="M400 170 C 340 150, 260 120, 180 85"/>
+
+        <text class="sealabel" x="14" y="470">Arabian Sea</text>
+        <text class="sealabel" x="450" y="470">Bay of Bengal</text>
+        <text class="sealabel" x="200" y="20" font-size="12">THE HIMALAYAS</text>
+        <g stroke="var(--gold)" stroke-width="2" fill="none" transform="translate(548 598)">
+          <path d="M0 -26V26M-26 0H26"/><circle r="9"/><text x="-4" y="-32" fill="var(--gold)" stroke="none" font-family="Cinzel" font-size="13">N</text>
+        </g>
+
+        <g class="city" tabindex="0" transform="translate(180 85)"><circle class="ring" r="7"/><circle r="7"/>
+          <g class="tip" transform="translate(14 -54)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Taxila</text><text class="s" x="9" y="36">A famous centre of learning</text></g></g>
+        <g class="city" tabindex="0" transform="translate(385 112)"><circle class="ring" r="7"/><circle r="7"/>
+          <g class="tip" transform="translate(-120 -58)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Lumbini</text><text class="s" x="9" y="36">Where the Buddha was born</text></g></g>
+        <g class="city" tabindex="0" transform="translate(400 170)"><circle class="ring" r="7"/><circle r="7"/>
+          <g class="tip" transform="translate(-205 14)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Pataliputra</text><text class="s" x="9" y="36">The capital (modern Patna)</text></g></g>
+        <g class="city" tabindex="0" transform="translate(260 262)"><circle class="ring" r="7"/><circle r="7"/>
+          <g class="tip" transform="translate(14 -54)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Ujjain</text><text class="s" x="9" y="36">Western provincial capital</text></g></g>
+        <g class="city" tabindex="0" transform="translate(112 288)"><circle class="ring" r="7"/><circle r="7"/>
+          <g class="tip" transform="translate(14 12)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Girnar</text><text class="s" x="9" y="36">An Ashokan rock edict is here</text></g></g>
+        <g class="city" tabindex="0" transform="translate(428 312)"><circle class="ring" r="7"/><circle r="7"/>
+          <g class="tip" transform="translate(-205 12)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Tosali (Kalinga)</text><text class="s" x="9" y="36">Site of Ashoka's great war</text></g></g>
+        <g class="city" tabindex="0" transform="translate(322 452)"><circle class="ring" r="7"/><circle r="7"/>
+          <g class="tip" transform="translate(14 -54)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Suvarnagiri</text><text class="s" x="9" y="36">Southern provincial capital</text></g></g>
+
+        <g transform="translate(20 600)" font-family="Cinzel" font-size="11" fill="var(--ink)">
+          <rect width="12" height="12" fill="#9a3126"/><text x="18" y="10">Chandragupta</text>
+          <rect y="18" width="12" height="12" fill="#c4922f"/><text x="18" y="28">Bindusara</text>
+          <rect y="36" width="12" height="12" fill="#4f8a75"/><text x="18" y="46">Ashoka</text>
+        </g>
+      </svg>
+    </div>
+    <div class="notes">
+      <p class="n n1"><b class="cin">Chandragupta's empire:</b> Northern India, the Ganga plains and the northwest, from Bengal to Afghanistan, plus Gujarat and Malwa. The dotted line is the old royal road linking Pataliputra to Taxila.</p>
+      <p class="n n2"><b class="cin">Bindusara adds:</b> Large parts of the Deccan plateau, taking the empire deep into the south.</p>
+      <p class="n n3"><b class="cin">Ashoka adds:</b> Kalinga on the east coast, the last great conquest of the Mauryas. After this war, Ashoka stopped conquering.</p>
+    </div>
+    <p class="mapcap">Hand-drawn, simplified map. Not to scale. Borders are approximate.</p>
+  </div>
+</section>
+
+<!-- ================= DAILY LIFE (accordion) ================= -->
+<section id="life">
+  <div class="title reveal"><h2>Life in the Empire</h2><p>Open each scroll to discover its secrets</p></div>
+  <div class="acc reveal">
+    <details name="life" open>
+      <summary>A Giant Government</summary>
+      <div class="body"><p>The emperor sat at the top and was helped by a council of ministers. The empire was split into provinces, often ruled by royal princes or trusted governors, with capitals such as Taxila, Ujjain, Tosali and Suvarnagiri.</p><p>Officials checked markets, roads, mines, weights and measures so that trade stayed fair.</p></div>
+    </details>
+    <details name="life">
+      <summary>Pataliputra, the Wooden City</summary>
+      <div class="body"><p>The Greek ambassador Megasthenes described Pataliputra as a long city surrounded by a strong wooden wall with 64 gates and 570 towers, plus a wide moat. Archaeologists have found remains of this wooden palisade.</p></div>
+    </details>
+    <details name="life">
+      <summary>The Mighty Army</summary>
+      <div class="body"><p>Ancient writers say the army had hundreds of thousands of foot soldiers and thousands of cavalry, chariots and elephants. One Roman writer, Pliny, gave very large numbers, which historians treat with care.</p><p>The four parts of an ancient Indian army were infantry, cavalry, chariots and war elephants.</p></div>
+    </details>
+    <details name="life">
+      <summary>Spies and Secrets</summary>
+      <div class="body"><p>The <i>Arthashastra</i>, a book of statecraft linked to Chanakya (Kautilya), describes a spy system. Spies could pose as merchants, wandering teachers or villagers to bring the king news from every corner of the land.</p></div>
+    </details>
+    <details name="life">
+      <summary>Coins, Markets and Taxes</summary>
+      <div class="body"><p>People used silver punch-marked coins stamped with symbols like the sun, hills and trees. Farmers paid part of their crop as tax, often described as about one-sixth. Traders carried cotton, spices, pearls, ivory and gems along the royal road and sea routes.</p></div>
+    </details>
+    <details name="life">
+      <summary>Roads, Trees and Rest Houses</summary>
+      <div class="body"><p>Ashoka's edicts say he had banyan and mango trees planted along roads, wells dug and rest houses built so travellers and animals could rest in the shade.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= EDICTS ================= -->
+<section id="dhamma">
+  <div class="title reveal"><h2>Ashoka's Messages in Stone</h2><p>Hover (or tap) a tablet to read what it says</p></div>
+  <p class="lead reveal">Ashoka had his messages carved on rocks and pillars in many places so ordinary people could read them. They are written mostly in Brahmi script in the Prakrit language. Here are four of the big ideas, put into simple words.</p>
+  <div class="tablets reveal">
+    <div class="tablet" tabindex="0">
+      <div class="carve"><small>ROCK EDICT XIII</small><h3>Sorrow for Kalinga</h3><div class="lines"></div></div>
+      <div class="msg"><p>Ashoka says he felt deep regret for the suffering caused by the Kalinga War. From now on, he wants to win people through dhamma, not weapons.</p></div>
+    </div>
+    <div class="tablet" tabindex="0">
+      <div class="carve"><small>ROCK EDICT II</small><h3>Care for All</h3><div class="lines"></div></div>
+      <div class="msg"><p>Medical care for people and animals, medicinal plants, shade trees along roads, and wells for travellers. A ruler should look after everyone.</p></div>
+    </div>
+    <div class="tablet" tabindex="0">
+      <div class="carve"><small>PILLAR EDICTS</small><h3>Be Kind</h3><div class="lines"></div></div>
+      <div class="msg"><p>Respect your parents, elders and teachers. Be generous, treat servants kindly, and protect animals from needless harm.</p></div>
+    </div>
+    <div class="tablet" tabindex="0">
+      <div class="carve"><small>ROCK EDICT XII</small><h3>Respect All Faiths</h3><div class="lines"></div></div>
+      <div class="msg"><p>People should honour each other's beliefs and not insult other faiths. Listening to one another helps everyone live together in peace.</p></div>
+    </div>
+  </div>
+  <p class="hint">These are my own simple summaries, not word-for-word translations.</p>
+</section>
+
+<!-- ================= TREASURE GALLERY ================= -->
+<section id="treasure">
+  <div class="title reveal"><h2>Treasure Chamber</h2><p>Click an object to examine it closely</p></div>
+  <div class="gal reveal" id="gallery">
+    <a class="thumb" href="#art1"><svg viewBox="0 0 200 400" role="img" aria-label="Stylised Mauryan pillar"><use href="#pillar"/></svg><h3>The Mauryan Pillar</h3><span>Click to open</span></a>
+    <a class="thumb" href="#art2"><svg viewBox="0 0 200 200" role="img" aria-label="Punch-marked silver coin"><use href="#coin"/></svg><h3>Punch-Marked Coin</h3><span>Click to open</span></a>
+    <a class="thumb" href="#art3"><div class="chakra" style="--s:150px;margin:15px auto 0;"></div><h3 style="margin-top:25px">The Dharma Wheel</h3><span>Click to open</span></a>
+  </div>
+
+  <div class="modal" id="art1"><a class="back" href="#gallery" aria-label="Close"></a>
+    <div class="box"><a class="close" href="#gallery">✕ Close</a>
+      <svg class="art" viewBox="0 0 200 400"><use href="#pillar"/></svg>
+      <div><h3>The Mauryan Pillar</h3>
+      <p>Ashoka set up tall, polished sandstone pillars across the empire. Many carried his messages, and some were topped by animals such as lions, bulls or elephants. The famous lion capital from Sarnath is now India's national emblem.</p>
+      <p style="margin-top:8px;color:#b5a27a;font-size:.9rem"><i>This is a simplified drawing made for this project.</i></p></div>
+    </div>
+  </div>
+  <div class="modal" id="art2"><a class="back" href="#gallery" aria-label="Close"></a>
+    <div class="box"><a class="close" href="#gallery">✕ Close</a>
+      <svg class="art" viewBox="0 0 200 200"><use href="#coin"/></svg>
+      <div><h3>Punch-Marked Coin</h3>
+      <p>Mauryan silver coins were not struck with a die. Small symbols were punched into a piece of silver one at a time. Common signs include the sun, a wheel-like shape, a hill with a crescent and a tree inside a railing.</p>
+      <p style="margin-top:8px;color:#b5a27a;font-size:.9rem"><i>A simplified drawing, not a copy of a real coin.</i></p></div>
+    </div>
+  </div>
+  <div class="modal" id="art3"><a class="back" href="#gallery" aria-label="Close"></a>
+    <div class="box"><a class="close" href="#gallery">✕ Close</a>
+      <div class="chakra spin" style="--s:200px;margin:auto"></div>
+      <div><h3>The Dharma Wheel</h3>
+      <p>The wheel stands for the law of dhamma, moving forward. The Ashoka Chakra on India's national flag has 24 spokes. Count them if you like.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HANDBOOK ================= -->
+<section id="handbook">
+  <div class="title reveal"><h2>The Empire's Handbook</h2><p>Drag a page by its edge, like a real book</p></div>
+  <div class="handbook reveal">
+    <input class="sr" type="checkbox" id="p1" aria-label="Open the handbook cover">
+    <input class="sr" type="checkbox" id="p2" aria-label="Turn page 2">
+    <input class="sr" type="checkbox" id="p3" aria-label="Turn page 3">
+    <input class="sr" type="checkbox" id="p4" aria-label="Turn page 4">
+    <input class="sr" type="checkbox" id="p5" aria-label="Turn page 5">
+    <input class="sr" type="checkbox" id="p6" aria-label="Turn page 6">
+
+    <div class="desk">
+      <div class="stage">
+        <div class="book">
+
+          <!-- Leaf 1: cover / contents -->
+          <div class="leaf l1" style="--z:6;--zf:1">
+            <div class="hpage front cover">
+              <label class="turn" for="p1" aria-label="Open the book"></label>
+              <div class="chakra spin"></div>
+              <h4>The Empire's Handbook</h4>
+              <p>The Mauryan Empire<br>c. 322 – 185 BCE</p>
+              <small>DRAG OR CLICK TO OPEN</small>
+            </div>
+            <div class="hpage back">
+              <label class="turn" for="p1" aria-label="Close the book"></label>
+              <h4>Inside This Handbook</h4>
+              <ul>
+                <li>Who Were the Mauryas?</li>
+                <li>Key Dates</li>
+                <li>Key People</li>
+                <li>Words to Know</li>
+                <li>Government &amp; Army</li>
+                <li>Ashoka's Dhamma</li>
+                <li>Trade, Coins &amp; Roads</li>
+                <li>Legacy Today</li>
+                <li>Think Like a Historian</li>
+              </ul>
+              <div class="ornament">❖ ❖ ❖</div>
+              <span class="pg">Contents</span>
+            </div>
+          </div>
+
+          <!-- Leaf 2: pages 1-2 -->
+          <div class="leaf l2" style="--z:5;--zf:2">
+            <div class="hpage front">
+              <label class="turn" for="p2" aria-label="Turn the page"></label>
+              <h4>Who Were the Mauryas?</h4>
+              <p>A dynasty that ruled most of the Indian subcontinent from about 322 to 185 BCE.</p>
+              <p>Its capital was <b>Pataliputra</b>. Chandragupta Maurya founded it, and his grandson Ashoka made it famous.</p>
+              <span class="pg">1</span>
+            </div>
+            <div class="hpage back">
+              <label class="turn" for="p2" aria-label="Turn the page back"></label>
+              <h4>Key Dates</h4>
+              <ul>
+                <li><b>322 BCE</b> Chandragupta takes Pataliputra</li>
+                <li><b>305 BCE</b> Treaty with Seleucus</li>
+                <li><b>261 BCE</b> The Kalinga War</li>
+                <li><b>232 BCE</b> Ashoka dies</li>
+                <li><b>185 BCE</b> The empire ends</li>
+              </ul>
+              <span class="pg">2</span>
+            </div>
+          </div>
+
+          <!-- Leaf 3: pages 3-4 -->
+          <div class="leaf l3" style="--z:4;--zf:3">
+            <div class="hpage front">
+              <label class="turn" for="p3" aria-label="Turn the page"></label>
+              <h4>Key People</h4>
+              <ul>
+                <li><b>Chandragupta</b> the founder</li>
+                <li><b>Chanakya</b> his teacher and adviser</li>
+                <li><b>Bindusara</b> expanded the empire south</li>
+                <li><b>Ashoka</b> chose peace</li>
+                <li><b>Megasthenes</b> Greek ambassador who wrote <i>Indica</i></li>
+              </ul>
+              <span class="pg">3</span>
+            </div>
+            <div class="hpage back">
+              <label class="turn" for="p3" aria-label="Turn the page back"></label>
+              <h4>Words to Know</h4>
+              <ul>
+                <li><b>Dynasty</b> a family of rulers</li>
+                <li><b>Edict</b> a royal message carved in stone</li>
+                <li><b>Dhamma</b> Ashoka's code of kindness</li>
+                <li><b>Brahmi</b> the ancient script of the edicts</li>
+                <li><b>Stupa</b> a dome-shaped Buddhist monument</li>
+              </ul>
+              <span class="pg">4</span>
+            </div>
+          </div>
+
+          <!-- Leaf 4: pages 5-6 -->
+          <div class="leaf l4" style="--z:3;--zf:4">
+            <div class="hpage front">
+              <label class="turn" for="p4" aria-label="Turn the page"></label>
+              <h4>Government &amp; Army</h4>
+              <p>The emperor ruled with ministers. Provinces were run by princes or governors.</p>
+              <p>The army had four parts: infantry, cavalry, chariots and elephants. Spies kept the king informed.</p>
+              <span class="pg">5</span>
+            </div>
+            <div class="hpage back">
+              <label class="turn" for="p4" aria-label="Turn the page back"></label>
+              <h4>Ashoka's Dhamma</h4>
+              <p>After the Kalinga War, Ashoka felt deep regret and chose a new path.</p>
+              <ul>
+                <li>Be kind to all</li>
+                <li>Respect elders</li>
+                <li>Honour all faiths</li>
+                <li>Care for animals</li>
+              </ul>
+              <span class="pg">6</span>
+            </div>
+          </div>
+
+          <!-- Leaf 5: pages 7-8 -->
+          <div class="leaf l5" style="--z:2;--zf:5">
+            <div class="hpage front">
+              <label class="turn" for="p5" aria-label="Turn the page"></label>
+              <h4>Trade, Coins &amp; Roads</h4>
+              <p>People used silver punch-marked coins. A royal road linked Pataliputra to Taxila.</p>
+              <p>Traders carried cotton, spices, pearls and ivory. Farmers paid part of their crop as tax.</p>
+              <span class="pg">7</span>
+            </div>
+            <div class="hpage back">
+              <label class="turn" for="p5" aria-label="Turn the page back"></label>
+              <h4>Legacy Today</h4>
+              <ul>
+                <li>The lion capital of Sarnath is India's national emblem</li>
+                <li>The Ashoka Chakra sits on the flag</li>
+                <li>The edicts help historians learn about the past</li>
+              </ul>
+              <span class="pg">8</span>
+            </div>
+          </div>
+
+          <!-- Leaf 6: page 9 / back cover -->
+          <div class="leaf l6" style="--z:1;--zf:6">
+            <div class="hpage front">
+              <label class="turn" for="p6" aria-label="Turn the page"></label>
+              <h4>Think Like a Historian</h4>
+              <ul>
+                <li>Why did Ashoka carve messages in stone?</li>
+                <li>Why would a huge empire need roads and spies?</li>
+                <li>How do we learn about the past without photographs?</li>
+              </ul>
+              <div class="note">Discuss these with your team!</div>
+              <span class="pg">9</span>
+            </div>
+            <div class="hpage back cover">
+              <label class="turn" for="p6" aria-label="Open the book again"></label>
+              <div class="chakra"></div>
+              <h4>The End</h4>
+              <p>Made by<br>Advik Goyal, Bhuvik Garyali<br>&amp; Aadvik Bansal</p>
+              <small>CLICK TO READ AGAIN</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <p class="hb-hint">Grab a page and drag it across. The paper folds where you hold it: grab a corner for a diagonal fold, or the middle of the edge for a straight one. You can also just click or tap: right page to go forward, left page to go back.</p>
+  </div>
+</section>
+
+<!-- ================= LEGACY ================= -->
+<section id="legacy">
+  <div class="title reveal"><h2>Why It Still Matters</h2><p>The Mauryan footprint in today's India</p></div>
+  <div class="legacy reveal">
+    <div class="leg" data-n="1"><h3>National Emblem</h3><p>India's national emblem comes from the lion capital of an Ashokan pillar found at Sarnath.</p></div>
+    <div class="leg" data-n="2"><h3>The Flag's Wheel</h3><p>The 24-spoke Ashoka Chakra sits at the centre of the Indian flag.</p></div>
+    <div class="leg" data-n="3"><h3>Spread of Buddhism</h3><p>Ashoka's support helped Buddhism reach Sri Lanka and other parts of Asia.</p></div>
+    <div class="leg" data-n="4"><h3>A Model of Governance</h3><p>Provinces, officials, roads and tax records showed how a vast land could be run as one state.</p></div>
+    <div class="leg" data-n="5"><h3>Writing Our Past</h3><p>Ashoka's edicts are among the earliest long written records in India and help historians reconstruct his reign.</p></div>
+  </div>
+</section>
+
+<!-- ================= QUIZ ================= -->
+<section id="quiz">
+  <div class="title reveal"><h2>Test Your Knowledge</h2><p>Pick an answer. The score updates by itself.</p></div>
+  <div class="quiz">
+
+    <fieldset class="q">
+      <legend>1. Who founded the Mauryan Empire?</legend>
+      <input class="sr no" type="radio" name="q1" id="q1a"><label for="q1a">Ashoka</label>
+      <input class="sr ok" type="radio" name="q1" id="q1b"><label for="q1b">Chandragupta Maurya</label>
+      <input class="sr no" type="radio" name="q1" id="q1c"><label for="q1c">Bindusara</label>
+      <p class="good">✔ Correct! Chandragupta began the empire around 322 BCE.</p>
+      <p class="bad">✘ Not quite. Think about who came first of the three great rulers.</p>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend>2. Which book about statecraft is linked to Chanakya (Kautilya)?</legend>
+      <input class="sr no" type="radio" name="q2" id="q2a"><label for="q2a">Indica</label>
+      <input class="sr no" type="radio" name="q2" id="q2b"><label for="q2b">The Edicts</label>
+      <input class="sr ok" type="radio" name="q2" id="q2c"><label for="q2c">Arthashastra</label>
+      <p class="good">✔ Yes! The Arthashastra talks about ruling, taxes, spies and the army.</p>
+      <p class="bad">✘ Not this one. Indica was written by a Greek ambassador.</p>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend>3. What was the capital of the Mauryan Empire?</legend>
+      <input class="sr ok" type="radio" name="q3" id="q3a"><label for="q3a">Pataliputra</label>
+      <input class="sr no" type="radio" name="q3" id="q3b"><label for="q3b">Taxila</label>
+      <input class="sr no" type="radio" name="q3" id="q3c"><label for="q3c">Ujjain</label>
+      <p class="good">✔ Right! Pataliputra is today's Patna.</p>
+      <p class="bad">✘ Close, but that was a provincial centre. The capital was on the Ganga.</p>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend>4. Which war changed Ashoka's heart?</legend>
+      <input class="sr no" type="radio" name="q4" id="q4a"><label for="q4a">The Battle of the Hydaspes</label>
+      <input class="sr no" type="radio" name="q4" id="q4b"><label for="q4b">The Battle of Panipat</label>
+      <input class="sr ok" type="radio" name="q4" id="q4c"><label for="q4c">The Kalinga War</label>
+      <p class="good">✔ Correct! The suffering in Kalinga led Ashoka to dhamma.</p>
+      <p class="bad">✘ Not that one. Ashoka's war was fought on India's east coast.</p>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend>5. How many spokes does the Ashoka Chakra have?</legend>
+      <input class="sr no" type="radio" name="q5" id="q5a"><label for="q5a">12</label>
+      <input class="sr ok" type="radio" name="q5" id="q5b"><label for="q5b">24</label>
+      <input class="sr no" type="radio" name="q5" id="q5c"><label for="q5c">32</label>
+      <p class="good">✔ Yes, 24 spokes, one for each hour of the day.</p>
+      <p class="bad">✘ Try again. Look at the big wheel at the top of this page and count.</p>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend>6. Who wrote <i>Indica</i>, describing Chandragupta's court?</legend>
+      <input class="sr no" type="radio" name="q6" id="q6a"><label for="q6a">Kautilya</label>
+      <input class="sr no" type="radio" name="q6" id="q6b"><label for="q6b">James Prinsep</label>
+      <input class="sr ok" type="radio" name="q6" id="q6c"><label for="q6c">Megasthenes</label>
+      <p class="good">✔ Correct! He was a Greek ambassador at the Mauryan court.</p>
+      <p class="bad">✘ Not quite. Think of the Greek ambassador.</p>
+    </fieldset>
+
+    <div class="score">Your score<small>Change any answer to update your score.</small></div>
+  </div>
+</section>
+
+<!-- ================= ABOUT US ================= -->
+<section id="about">
+  <div class="title reveal"><h2>About Us</h2><p>The team behind this project</p></div>
+  <p class="about-intro reveal">We are three students who teamed up to explore one of the greatest chapters of Indian history. We read, researched and built this project together to share the story of the Mauryan Empire in a fun and interactive way.</p>
+  <div class="team reveal">
+    <div class="member"><div class="crest">AG</div><h3>Advik Goyal</h3><p>Team Member</p></div>
+    <div class="member"><div class="crest">BG</div><h3>Bhuvik Garyali</h3><p>Team Member</p></div>
+    <div class="member"><div class="crest">AB</div><h3>Aadvik Bansal</h3><p>Team Member</p></div>
+  </div>
+  <div class="why reveal">
+    <h3>Why the Mauryas?</h3>
+    <p>The Mauryan Empire was the first to bring most of the subcontinent under one government. Ashoka's story is the part we love most: a powerful king who looked at the pain of war and chose peace, and left messages in stone for us to read 2,000 years later.</p>
+  </div>
+  <div class="stats reveal">
+    <div><strong>8</strong>Timeline events</div>
+    <div><strong>3</strong>Great rulers</div>
+    <div><strong>7</strong>Map cities</div>
+    <div><strong>6</strong>Life topics</div>
+    <div><strong>4</strong>Ashokan edicts</div>
+    <div><strong>6</strong>Quiz questions</div>
+  </div>
+  <div class="glance reveal">
+    <div><b>Topic</b>The Mauryan Empire</div>
+    <div><b>Class</b>6</div>
+    <div><b>School</b>[School Name]</div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="cin">THE MAURYAN EMPIRE</div>
+  <p>A history project by <b>Advik Goyal, Bhuvik Garyali &amp; Aadvik Bansal</b>, Class 6 · [School Name]</p>
+  <p>Sources to cite: your NCERT history textbook, Encyclopaedia Britannica, and the Archaeological Survey of India website. Dates are approximate and may differ between books.</p>
+  <p><a href="#top">↑ Back to the top</a></p>
+</footer>
+
+</div>
+
+<!-- JavaScript. Only handbook-fold.js has code. The other files are empty, ready for you to fill.
+     Delete all the <script> lines to run with HTML + CSS only. -->
+<script src="js/main.js" defer></script>
+<script src="js/navigation.js" defer></script>
+<script src="js/hero.js" defer></script>
+<script src="js/story-cards.js" defer></script>
+<script src="js/timeline.js" defer></script>
+<script src="js/rulers.js" defer></script>
+<script src="js/map.js" defer></script>
+<script src="js/life.js" defer></script>
+<script src="js/edicts.js" defer></script>
+<script src="js/treasure.js" defer></script>
+<script src="js/legacy.js" defer></script>
+<script src="js/quiz.js" defer></script>
+<script src="js/about.js" defer></script>
+<script src="js/handbook-fold.js" defer></script>
+</body>
+</html>

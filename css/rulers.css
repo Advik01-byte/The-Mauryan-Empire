@@ -1,0 +1,29 @@
+/* Three Great Rulers (radio-button tabs) */
+/* ---------- Tabs (radio buttons) ---------- */
+.tabs{margin-top:28px}
+.tabbar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px}
+.tabbar label{cursor:pointer;font-family:'Cinzel',serif;letter-spacing:.1em;font-size:.9rem;padding:11px 20px;
+  border:2px solid var(--line);color:var(--muted);border-radius:30px;transition:.3s;background:var(--bg2)}
+.tabbar label:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+#r1:checked ~ .tabbar [for=r1],#r2:checked ~ .tabbar [for=r2],#r3:checked ~ .tabbar [for=r3]{
+  background:var(--gold);color:#120e09;border-color:var(--gold);box-shadow:0 0 22px var(--glow)}
+#r1:focus-visible ~ .tabbar [for=r1],#r2:focus-visible ~ .tabbar [for=r2],#r3:focus-visible ~ .tabbar [for=r3]{outline:2px solid var(--ink);outline-offset:3px}
+.pn{display:none;grid-template-columns:200px 1fr;gap:30px;align-items:center;background:var(--bg2);
+  border:2px solid var(--gold);border-radius:10px;padding:30px;animation:fadein .7s both;
+  box-shadow:inset 0 0 60px rgba(0,0,0,.3),0 0 30px var(--glow)}
+#r1:checked ~ .panels .p1,#r2:checked ~ .panels .p2,#r3:checked ~ .panels .p3{display:grid}
+@keyframes fadein{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.seal{width:180px;aspect-ratio:1;border-radius:50%;margin:auto;display:grid;place-items:center;text-align:center;
+  background:radial-gradient(circle at 35% 30%,#c44a3a,var(--crimson) 55%,#4d1510);
+  border:6px double #ffd978;color:#ffe9b0;font-family:'Cinzel',serif;box-shadow:0 8px 22px rgba(0,0,0,.5),inset 0 0 20px rgba(0,0,0,.4);
+  animation:bob 5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(2deg)}}
+.seal b{font-size:2.6rem;display:block;line-height:1}
+.seal span{font-size:.7rem;letter-spacing:.2em}
+.pn h3{font-size:1.7rem;color:var(--gold)}
+.pn .dates{font-family:'Cinzel',serif;color:var(--muted);letter-spacing:.12em;font-size:.85rem;margin-bottom:8px}
+.pn ul{margin:10px 0 0 20px}
+.pn li{margin:4px 0}
+.fun{margin-top:14px;padding:10px 14px;border-left:4px solid var(--verd);background:rgba(79,138,117,.15);font-size:1rem}
+.fun b{color:var(--verd);font-family:'Cinzel',serif;letter-spacing:.08em;font-size:.8rem;text-transform:uppercase}
+

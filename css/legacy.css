@@ -1,0 +1,10 @@
+/* Why It Still Matters */
+/* ---------- Legacy ---------- */
+.legacy{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:30px}
+.leg{background:var(--bg2);border:1px solid var(--line);padding:22px;border-radius:8px;position:relative;overflow:hidden;transition:.4s}
+.leg::before{content:attr(data-n);position:absolute;right:10px;top:-16px;font-family:'Cinzel',serif;font-size:5rem;font-weight:900;color:var(--gold);opacity:.1;transition:.4s}
+.leg:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 0 28px var(--glow)}
+.leg:hover::before{opacity:.3;transform:scale(1.2)}
+.leg h3{color:var(--gold);font-size:1.1rem;margin-bottom:6px}
+.leg p{font-size:1rem;color:var(--muted)}
+

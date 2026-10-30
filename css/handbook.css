@@ -1,0 +1,50 @@
+/* The Empire's Handbook (book, pages, fold layers) */
+/* ---------- Handbook (3D page-turning book, CSS only) ---------- */
+.handbook{--pw:clamp(158px,43vw,330px);--ph:calc(var(--pw) * 1.45);margin-top:30px}
+.desk{border-radius:14px;border:3px double var(--gold);padding:46px 8px 58px;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 25%,#43301a,#1a120a 75%);box-shadow:inset 0 0 70px rgba(0,0,0,.65),0 14px 40px rgba(0,0,0,.5)}
+.stage{height:var(--ph);display:flex;justify-content:center}
+.book{position:relative;width:var(--pw);height:var(--ph);transition:transform 1.1s cubic-bezier(.45,.05,.25,1)}
+#p1:checked ~ .desk .book{transform:translateX(50%)}
+#p6:checked ~ .desk .book{transform:translateX(100%)}
+.leaf{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;z-index:var(--z);
+  transform:perspective(2400px) rotateY(0deg);
+  transition:transform 1.1s cubic-bezier(.45,.05,.25,1),z-index 0s linear .55s}
+.leaf:hover{transform:perspective(2400px) rotateY(-7deg)}
+#p1:checked ~ .desk .l1,#p2:checked ~ .desk .l2,#p3:checked ~ .desk .l3,
+#p4:checked ~ .desk .l4,#p5:checked ~ .desk .l5,#p6:checked ~ .desk .l6{transform:perspective(2400px) rotateY(-180deg);z-index:var(--zf)}
+.hpage{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;
+  color:#2a1c0d;font-family:'IM Fell English',Georgia,serif;font-size:clamp(.64rem,calc(var(--pw) / 23),.95rem);line-height:1.38;
+  padding:calc(var(--pw) * .1) calc(var(--pw) * .09) calc(var(--pw) * .15);
+  background:linear-gradient(160deg,#efe2bd,#e2cf9f);border:1px solid #b09357}
+.hpage.front{border-radius:0 7px 7px 0;box-shadow:inset 20px 0 26px -20px rgba(0,0,0,.5),4px 6px 14px rgba(0,0,0,.4)}
+.hpage.back{transform:rotateY(180deg);border-radius:7px 0 0 7px;box-shadow:inset -20px 0 26px -20px rgba(0,0,0,.5),-4px 6px 14px rgba(0,0,0,.4)}
+.hpage h4{font-family:'Cinzel',serif;font-size:1.1em;color:#7a1f17;letter-spacing:.04em;line-height:1.2;
+  border-bottom:1px solid #b09357;padding-bottom:.3em;margin-bottom:.55em}
+.hpage p+p{margin-top:.5em}
+.hpage ul{list-style:none}
+.hpage li{margin:.28em 0;padding-left:1.15em;position:relative}
+.hpage li::before{content:"☸";position:absolute;left:0;color:#9a3126;font-size:.85em}
+.hpage b{color:#7a1f17}
+.hpage .pg{position:absolute;bottom:calc(var(--pw) * .05);font-family:'Cinzel',serif;font-size:.8em;color:#7a6338}
+.hpage.front .pg{right:calc(var(--pw) * .09)}
+.hpage.back .pg{left:calc(var(--pw) * .09)}
+.hpage .note{margin-top:.6em;padding:.4em .6em;border-left:3px solid #4f8a75;background:rgba(79,138,117,.15);font-size:.92em}
+.hpage .ornament{text-align:center;color:#9a3126;letter-spacing:.4em;margin:.5em 0}
+.turn{position:absolute;inset:0;z-index:5;cursor:grab;touch-action:none}
+.hpage{user-select:none;-webkit-user-select:none}
+.handbook.is-dragging,.handbook.is-dragging .turn{cursor:grabbing}
+.turn::after{content:"";position:absolute;bottom:0;width:0;height:0;transition:.35s}
+.hpage.front .turn::after{right:0;background:linear-gradient(to top left,#cdb57a,#f6ecca);clip-path:polygon(100% 0,100% 100%,0 100%)}
+.hpage.back .turn::after{left:0;background:linear-gradient(to top right,#cdb57a,#f6ecca);clip-path:polygon(0 0,0 100%,100% 100%)}
+.hpage:hover .turn::after{width:calc(var(--pw) * .17);height:calc(var(--pw) * .17)}
+.hpage.cover{background:radial-gradient(circle at 30% 22%,#b8402f,#8e2b22 55%,#4a130e);color:#f6e3ae;border:1px solid #2a0c08;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8%}
+.hpage.cover::before{content:"";position:absolute;inset:5%;border:2px solid #d4a937;outline:1px solid rgba(212,169,55,.55);outline-offset:4px;pointer-events:none;border-radius:3px}
+.hpage.cover .chakra{--s:calc(var(--pw) * .36);border-width:3px;margin:0 auto .9em;box-shadow:0 0 22px rgba(212,169,55,.5)}
+.hpage.cover h4{color:#ffd978;border:none;font-size:1.35em;letter-spacing:.1em;margin:0 0 .3em;text-transform:uppercase;line-height:1.15}
+.hpage.cover p{font-style:italic;color:#f1d9a0}
+.hpage.cover small{display:block;margin-top:1.1em;font-family:'Cinzel',serif;letter-spacing:.14em;font-size:.72em;color:#ffd978;animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+.hb-hint{text-align:center;color:var(--muted);font-style:italic;margin-top:16px;font-size:.95rem}
+

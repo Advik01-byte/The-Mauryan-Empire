@@ -1,0 +1,17 @@
+/* Life in the Empire (accordion scrolls) */
+/* ---------- Accordion ---------- */
+.acc{max-width:850px;margin:30px auto 0}
+details{border:1px solid var(--line);border-left:5px solid var(--gold);background:var(--bg2);margin-bottom:12px;border-radius:5px;
+  transition:.3s;overflow:hidden}
+details:hover{box-shadow:0 0 20px var(--glow)}
+details[open]{border-left-color:var(--crimson)}
+summary{list-style:none;cursor:pointer;padding:16px 56px 16px 20px;font-family:'Cinzel',serif;font-size:1.05rem;
+  letter-spacing:.06em;position:relative;color:var(--ink)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);width:30px;height:30px;
+  display:grid;place-items:center;border:2px solid var(--gold);border-radius:50%;color:var(--gold);font-size:1.3rem;transition:.4s}
+details[open] summary::after{content:"−";transform:translateY(-50%) rotate(180deg);background:var(--gold);color:#120e09}
+details .body{padding:0 22px 20px;animation:fadein .5s both;color:var(--ink)}
+details .body p+p{margin-top:8px}
+summary:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
+
