@@ -29,7 +29,7 @@
 .hpage .pg{position:absolute;bottom:calc(var(--pw) * .05);font-family:'Cinzel',serif;font-size:.8em;color:#7a6338}
 .hpage.front .pg{right:calc(var(--pw) * .09)}
 .hpage.back .pg{left:calc(var(--pw) * .09)}
-.hpage .note{margin-top:.6em;padding:.4em .6em;border-left:3px solid #4f8a75;background:rgba(79,138,117,.15);font-size:.92em}
+.hpage
 .hpage .ornament{text-align:center;color:#9a3126;letter-spacing:.4em;margin:.5em 0}
 .turn{position:absolute;inset:0;z-index:5;cursor:grab;touch-action:none}
 .hpage{user-select:none;-webkit-user-select:none}
