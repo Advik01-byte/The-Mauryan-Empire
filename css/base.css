@@ -7,6 +7,11 @@
 html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{margin:0;background:#120e09}
 .sr{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+/* The browser scrolls to a focused input. Each hidden input is parked beside the control it belongs to,
+   so clicking a label never moves the page. The lamp switch lives in the sticky top bar, so its input stays in the corner. */
+#torch{position:fixed;top:0;left:0}
+.tabs,.eras,.compare,.handbook{position:relative}
+.tabs>.sr,.eras>.sr{top:36px}
 
 /* ---------- Colour themes (night = default, lamp = daylight parchment) ---------- */
 .page{

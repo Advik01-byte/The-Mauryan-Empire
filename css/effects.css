@@ -84,7 +84,7 @@ nav .brand:hover{letter-spacing:.24em}
 #torch:checked ~ .page .lamp{box-shadow:0 0 22px var(--glow),0 0 0 3px rgba(42,28,13,.25)}
 
 /* ---------- Overlay menu: a circle of light opens from the button ---------- */
-.menu:target{animation:menu-open .8s var(--ease-out) both}
+#menu:target + .menu{animation:menu-open .8s var(--ease-out) both}
 @keyframes menu-open{
   from{clip-path:circle(0% at 70px 28px);opacity:.6}
   to{clip-path:circle(150% at 70px 28px);opacity:1}}
@@ -294,8 +294,6 @@ summary::after{transition:transform .5s var(--ease-spring),background .3s,color 
 .tablet{transition:transform .5s var(--ease-out),box-shadow .5s}
 .tablet .carve .lines{animation:chisel 4s ease-in-out infinite}
 @keyframes chisel{50%{opacity:.3}}
-.read-btn{transition:background .3s,color .3s,scale .3s var(--ease-spring)}
-.read-btn:hover{scale:1.08}
 
 /* treasures: spring lift, pop-ups scale in, the art floats */
 .thumb{transition:transform .5s var(--ease-spring),box-shadow .4s}

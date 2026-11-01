@@ -5,6 +5,7 @@
 @property --pos{syntax:"<percentage>";inherits:true;initial-value:50%}
 
 .compare{max-width:1000px;margin:34px auto 0}
+.compare>.sr{top:auto;bottom:70px}
 
 .cmp-frame{--pos:50%;position:relative;aspect-ratio:3/2;overflow:hidden;cursor:ew-resize;user-select:none;-webkit-user-select:none;
   touch-action:pan-y;border:3px double var(--gold);border-radius:8px;background:#120e09;

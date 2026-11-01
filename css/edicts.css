@@ -19,9 +19,4 @@
 .tablet:hover .msg,.tablet:focus .msg{transform:none}
 .hint{text-align:center;color:var(--muted);font-style:italic;font-size:.9rem;margin-top:16px}
 
-/* edicts.js: read-aloud button inside each tablet */
-.tablet .msg{flex-direction:column;justify-content:center;gap:14px}
 .tablet:focus-within .msg{transform:none}
-.read-btn{cursor:pointer;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;padding:8px 14px;border-radius:18px;
-  border:2px solid #ffd978;background:transparent;color:#ffd978;transition:.3s}
-.read-btn:hover{background:#ffd978;color:#120e09}

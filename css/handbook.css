@@ -1,5 +1,6 @@
 /* The Empire's Handbook (book, pages, fold layers) */
 /* ---------- Handbook (3D page-turning book, CSS only) ---------- */
+.handbook>.sr{top:50%}
 .handbook{--pw:clamp(158px,43vw,330px);--ph:calc(var(--pw) * 1.45);margin-top:30px}
 .desk{border-radius:14px;border:3px double var(--gold);padding:46px 8px 58px;overflow:hidden;
   background:radial-gradient(ellipse at 50% 25%,#43301a,#1a120a 75%);box-shadow:inset 0 0 70px rgba(0,0,0,.65),0 14px 40px rgba(0,0,0,.5)}
@@ -29,7 +30,6 @@
 .hpage .pg{position:absolute;bottom:calc(var(--pw) * .05);font-family:'Cinzel',serif;font-size:.8em;color:#7a6338}
 .hpage.front .pg{right:calc(var(--pw) * .09)}
 .hpage.back .pg{left:calc(var(--pw) * .09)}
-.hpage
 .hpage .ornament{text-align:center;color:#9a3126;letter-spacing:.4em;margin:.5em 0}
 .turn{position:absolute;inset:0;z-index:5;cursor:grab;touch-action:none}
 .hpage{user-select:none;-webkit-user-select:none}

@@ -32,6 +32,7 @@ mauryan-empire-project/
 │   └── responsive.css      Phone layout + reduced motion (must load last)
 └── js/                     One script per section
     ├── main.js             Back-to-top button
+    ├── center-view.js      Centre the slider / handbook on screen after a click
     ├── navigation.js       Esc closes the menu; lamp choice is remembered
     ├── hero.js             Typing tagline + random "Did you know?" fact
     ├── story-cards.js      Click to flip a card, Flip all / Flip all back
@@ -39,7 +40,6 @@ mauryan-empire-project/
     ├── rulers.js           Tabs that rotate by themselves
     ├── map.js              Click a city to read its story
     ├── life.js             Open all / Close all
-    ├── edicts.js           Read a tablet aloud
     ├── treasure.js         Left/right arrow keys in the pop-ups
     ├── legacy.js           Random "Did you know?" facts
     ├── quiz.js             Score message, best score, reset

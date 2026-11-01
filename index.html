@@ -89,7 +89,8 @@
 
 <!-- ================= OVERLAY MENU (opens with :target, no JavaScript) ================= -->
 <span class="anchor" id="closed"></span>
-<div class="menu" id="menu">
+<span class="anchor" id="menu"></span>
+<div class="menu">
   <a class="menu-back" href="#closed" aria-label="Close the menu"></a>
   <div class="menu-box">
     <a class="menu-close" href="#closed">✕ Close</a>
@@ -241,7 +242,7 @@
 <!-- ================= MAP ================= -->
 <section id="map">
   <div class="title reveal"><h2>Watch the Empire Grow</h2><p>Choose a ruler, then hover over the glowing cities</p></div>
-  <div class="reveal">
+  <div class="reveal eras">
     <input class="sr" type="radio" name="era" id="m1" checked>
     <input class="sr" type="radio" name="era" id="m2">
     <input class="sr" type="radio" name="era" id="m3">
@@ -390,19 +391,19 @@
   <div class="tablets reveal">
     <div class="tablet" tabindex="0">
       <div class="carve"><small>ROCK EDICT XIII</small><h3>Sorrow for Kalinga</h3><div class="lines"></div></div>
-      <div class="msg"><p>Ashoka says he felt deep regret for the suffering caused by the Kalinga War. From now on, he wants to win people through dhamma, not weapons.</p><button class="read-btn js-read">🔊 Read aloud</button></div>
+      <div class="msg"><p>Ashoka says he felt deep regret for the suffering caused by the Kalinga War. From now on, he wants to win people through dhamma, not weapons.</p></div>
     </div>
     <div class="tablet" tabindex="0">
       <div class="carve"><small>ROCK EDICT II</small><h3>Care for All</h3><div class="lines"></div></div>
-      <div class="msg"><p>Medical care for people and animals, medicinal plants, shade trees along roads, and wells for travellers. A ruler should look after everyone.</p><button class="read-btn js-read">🔊 Read aloud</button></div>
+      <div class="msg"><p>Medical care for people and animals, medicinal plants, shade trees along roads, and wells for travellers. A ruler should look after everyone.</p></div>
     </div>
     <div class="tablet" tabindex="0">
       <div class="carve"><small>PILLAR EDICTS</small><h3>Be Kind</h3><div class="lines"></div></div>
-      <div class="msg"><p>Respect your parents, elders and teachers. Be generous, treat servants kindly, and protect animals from needless harm.</p><button class="read-btn js-read">🔊 Read aloud</button></div>
+      <div class="msg"><p>Respect your parents, elders and teachers. Be generous, treat servants kindly, and protect animals from needless harm.</p></div>
     </div>
     <div class="tablet" tabindex="0">
       <div class="carve"><small>ROCK EDICT XII</small><h3>Respect All Faiths</h3><div class="lines"></div></div>
-      <div class="msg"><p>People should honour each other's beliefs and not insult other faiths. Listening to one another helps everyone live together in peace.</p><button class="read-btn js-read">🔊 Read aloud</button></div>
+      <div class="msg"><p>People should honour each other's beliefs and not insult other faiths. Listening to one another helps everyone live together in peace.</p></div>
     </div>
   </div>
   <p class="hint">These are our own simple summaries, not word-for-word translations.</p>
@@ -417,8 +418,8 @@
     <a class="thumb" href="#art3"><div class="chakra" style="--s:150px;margin:15px auto 0;"></div><h3 style="margin-top:25px">The Dharma Wheel</h3><span>Click to open</span></a>
   </div>
 
-  <div class="modal" id="art1"><a class="back" href="#gallery" aria-label="Close"></a>
-    <div class="box"><a class="close" href="#gallery">✕ Close</a>
+  <div class="modal" id="art1"><a class="back" href="#closed" aria-label="Close"></a>
+    <div class="box"><a class="close" href="#closed">✕ Close</a>
       <svg class="art" viewBox="0 0 200 400"><use href="#pillar"/></svg>
       <div><h3>The Mauryan Pillar</h3>
       <p>Ashoka set up tall, polished sandstone pillars across the empire. Many carried his messages, and some were topped by animals such as lions, bulls or elephants. The famous lion capital from Sarnath is now India's national emblem.</p>
@@ -426,8 +427,8 @@
       <p class="key-hint">Tip: press the ← and → keys to see the next treasure.</p></div>
     </div>
   </div>
-  <div class="modal" id="art2"><a class="back" href="#gallery" aria-label="Close"></a>
-    <div class="box"><a class="close" href="#gallery">✕ Close</a>
+  <div class="modal" id="art2"><a class="back" href="#closed" aria-label="Close"></a>
+    <div class="box"><a class="close" href="#closed">✕ Close</a>
       <svg class="art" viewBox="0 0 200 200"><use href="#coin"/></svg>
       <div><h3>Punch-Marked Coin</h3>
       <p>Mauryan silver coins were not struck with a die. Small symbols were punched into a piece of silver one at a time. Common signs include the sun, a wheel-like shape, a hill with a crescent and a tree inside a railing.</p>
@@ -435,8 +436,8 @@
       <p class="key-hint">Tip: press the ← and → keys to see the next treasure.</p></div>
     </div>
   </div>
-  <div class="modal" id="art3"><a class="back" href="#gallery" aria-label="Close"></a>
-    <div class="box"><a class="close" href="#gallery">✕ Close</a>
+  <div class="modal" id="art3"><a class="back" href="#closed" aria-label="Close"></a>
+    <div class="box"><a class="close" href="#closed">✕ Close</a>
       <div class="chakra spin" style="--s:200px;margin:auto"></div>
       <div><h3>The Dharma Wheel</h3>
       <p>The wheel stands for the law of dhamma, moving forward. The Ashoka Chakra on India's national flag has 24 spokes. Count them if you like.</p>
@@ -722,9 +723,9 @@
 
   <!-- Team pop-ups (CSS only, opened with :target) -->
   <div class="pmodal" id="person-advik" role="dialog" aria-modal="true" aria-labelledby="pt-advik">
-    <a class="back" href="#about" aria-label="Close"></a>
+    <a class="back" href="#closed" aria-label="Close"></a>
     <div class="pbox">
-      <a class="close" href="#about">✕ Close</a>
+      <a class="close" href="#closed">✕ Close</a>
       <div class="crest big">AG</div>
       <p class="prole">Lead Website Designer</p>
       <h3 id="pt-advik">Advik Goyal</h3>
@@ -734,9 +735,9 @@
     </div>
   </div>
   <div class="pmodal" id="person-aadvik" role="dialog" aria-modal="true" aria-labelledby="pt-aadvik">
-    <a class="back" href="#about" aria-label="Close"></a>
+    <a class="back" href="#closed" aria-label="Close"></a>
     <div class="pbox">
-      <a class="close" href="#about">✕ Close</a>
+      <a class="close" href="#closed">✕ Close</a>
       <div class="crest big">AB</div>
       <p class="prole">Lead Roleplay Designer</p>
       <h3 id="pt-aadvik">Aadvik Bansal</h3>
@@ -746,9 +747,9 @@
     </div>
   </div>
   <div class="pmodal" id="person-bhuvik" role="dialog" aria-modal="true" aria-labelledby="pt-bhuvik">
-    <a class="back" href="#about" aria-label="Close"></a>
+    <a class="back" href="#closed" aria-label="Close"></a>
     <div class="pbox">
-      <a class="close" href="#about">✕ Close</a>
+      <a class="close" href="#closed">✕ Close</a>
       <div class="crest big">BG</div>
       <p class="prole">Lead Presentation Designer</p>
       <h3 id="pt-bhuvik">Bhuvik Garyali</h3>
@@ -781,12 +782,12 @@
 <script src="js/rulers.js" defer></script>
 <script src="js/map.js" defer></script>
 <script src="js/life.js" defer></script>
-<script src="js/edicts.js" defer></script>
 <script src="js/treasure.js" defer></script>
 <script src="js/legacy.js" defer></script>
 <script src="js/quiz.js" defer></script>
 <script src="js/about.js" defer></script>
 <script src="js/handbook-fold.js" defer></script>
 <script src="js/compare-slider.js" defer></script>
+<script src="js/center-view.js" defer></script>
 </body>
 </html>
