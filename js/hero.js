@@ -1,21 +1,32 @@
-/* ============================================================
-   hero.js  —  Title banner.
-   This file has no code yet. The hints below are for you.
-   Method and cheat sheet: see HINTS.md in the main folder.
-   ------------------------------------------------------------
-STARTER FEATURES:
+// Hero banner: typing tagline and a random "Did you know?" fact.
+const tagline = document.querySelector('.tag');
+const fullText = tagline.textContent;
+tagline.textContent = '';
+let letters = 0;
+const prefersLessMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-A) Typing effect on the tagline (the paragraph with class "tag")
- 1. Get it:  document.querySelector('.tag')
- 2. Save its text in a variable, then set  element.textContent = ''
- 3. let i = 0;  then  setInterval(() => { ... }, 40)
- 4. Inside: add one more letter:  text.slice(0, i)  then  i++
- 5. When i is bigger than the text length: clearInterval(...) to stop.
+if (prefersLessMotion) {
+  tagline.textContent = fullText;
+} else {
+  // wait for the opening splash to finish, then type the tagline
+  setTimeout(() => {
+    const typingTimer = setInterval(() => {
+      letters++;
+      tagline.textContent = fullText.slice(0, letters);
+      if (letters >= fullText.length) {
+        clearInterval(typingTimer);
+      }
+    }, 35);
+  }, 2300);
+}
 
-B) "Fact of the day"
- 1. Make an array of facts:  const facts = ['...', '...', '...'];
- 2. Pick one at random (see the cheat sheet in HINTS.md).
- 3. Put it in a new  <p class="js-fact">  with textContent.
-   ============================================================ */
-
-// Write your code here.
+const heroFacts = [
+  "Ashoka called himself Devanampiya Piyadasi, which means Beloved of the Gods.",
+  "Mauryan silver coins were punch-marked with small symbols like the sun and a tree inside a railing.",
+  "Bindusara asked a Greek king for sweet wine, dried figs and a philosopher. He got the wine and figs.",
+  "The Arthashastra, linked to Chanakya, describes a system of spies.",
+  "Ashoka's pillars were made of polished sandstone."
+];
+const heroFactElement = document.querySelector('.js-fact');
+const heroFactNumber = Math.floor(Math.random() * heroFacts.length);
+heroFactElement.textContent = 'Did you know? ' + heroFacts[heroFactNumber];

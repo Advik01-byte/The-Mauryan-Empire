@@ -35,3 +35,7 @@
 #m1:checked ~ .notes .n1,#m2:checked ~ .notes .n2,#m3:checked ~ .notes .n3{display:block}
 .mapcap{font-size:.85rem;color:var(--muted);text-align:center;margin-top:10px;font-style:italic}
 
+/* map.js: the story box under the map */
+.city-box{max-width:620px;margin:18px auto 0;padding:16px 22px;text-align:center;background:var(--bg2);
+  border:2px solid var(--gold);border-left-width:6px;border-radius:6px;box-shadow:0 0 24px var(--glow)}
+.city-box h3{color:var(--gold);letter-spacing:.1em;text-transform:uppercase;font-size:1.1rem;margin-bottom:4px}

@@ -1,0 +1,385 @@
+/* =====================================================
+   EFFECTS LAYER: animations, transitions and polish.
+   100% CSS. Loads after the section files and before
+   responsive.css. Nothing in here touches the handbook.
+
+   Rules used everywhere in this file:
+   - Reveals animate the individual properties `translate`,
+     `scale` and `opacity` (not `transform`), so the hover
+     effects that use `transform` keep working.
+   - Scroll-driven effects live inside @supports blocks, so
+     older browsers simply show the finished page.
+   ===================================================== */
+
+/* ---------- Animatable custom properties ---------- */
+@property --angle{syntax:"<angle>";inherits:false;initial-value:0deg}
+
+/* ---------- Easing helpers ---------- */
+:root{
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
+}
+
+/* ---------- Page feel: scrollbar, selection, focus ---------- */
+html{scrollbar-color:#d4a937 #120e09;scrollbar-width:thin}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:#120e09}
+::-webkit-scrollbar-thumb{background:linear-gradient(#d4a937,#9a3126);border-radius:8px;border:2px solid #120e09}
+.page ::selection{background:var(--gold);color:#120e09}
+.page :focus-visible{outline-color:var(--gold)}
+
+/* A stacking context so the drifting dust can sit behind the content */
+.page{isolation:isolate}
+
+/* ---------- Drifting golden dust over the whole page ---------- */
+.page::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:
+    radial-gradient(circle,var(--gold) 0 1px,transparent 2px),
+    radial-gradient(circle,var(--gold) 0 1.5px,transparent 2.5px),
+    radial-gradient(circle,var(--gold) 0 1px,transparent 2px);
+  background-size:331px 347px,517px 463px,251px 293px;
+  background-position:0 0,120px 90px,60px 200px;
+  animation:dust 90s linear infinite}
+@keyframes dust{to{background-position:90px -347px,-60px -373px,-40px -93px}}
+
+/* =====================================================
+   OPENING SPLASH (a fixed layer that fades itself away)
+   ===================================================== */
+body::before{content:"MAURYAN EMPIRE";position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
+  padding-top:150px;pointer-events:none;color:#d4a937;font-family:'Cinzel',serif;font-weight:900;
+  font-size:clamp(1.3rem,5vw,2.6rem);text-align:center;
+  background:radial-gradient(circle at 50% 45%,#2b1d0e,#0b0805 70%);
+  animation:splash 2.5s var(--ease-out) both}
+body::after{content:"";position:fixed;z-index:10000;left:50%;top:calc(50% - 120px);width:130px;aspect-ratio:1;margin-left:-65px;
+  border-radius:50%;pointer-events:none;border:5px solid #d4a937;
+  background:repeating-conic-gradient(#d4a937 0 1deg,transparent 1deg 15deg);
+  box-shadow:0 0 50px rgba(212,169,55,.55),inset 0 0 20px rgba(212,169,55,.4);
+  animation:splash-chakra 2.5s var(--ease-out) both}
+@keyframes splash{
+  0%{opacity:1;letter-spacing:.9em;visibility:visible}
+  60%{opacity:1;letter-spacing:.28em}
+  85%{opacity:1}
+  100%{opacity:0;letter-spacing:.2em;visibility:hidden}}
+@keyframes splash-chakra{
+  0%{opacity:0;scale:.2;rotate:-200deg;visibility:visible}
+  35%{opacity:1;scale:1}
+  85%{opacity:1;scale:1.05}
+  100%{opacity:0;scale:1.6;rotate:160deg;visibility:hidden}}
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+nav{animation:nav-drop .9s 1.7s var(--ease-out) backwards}
+@keyframes nav-drop{from{opacity:0;translate:0 -100%}}
+
+/* the burger turns into an X when you hover it */
+.bars i{transition:translate .35s var(--ease-out),rotate .35s var(--ease-out),opacity .25s,width .3s}
+.burger:hover .bars i:nth-child(1){translate:0 7px;rotate:45deg}
+.burger:hover .bars i:nth-child(2){opacity:0;width:22px}
+.burger:hover .bars i:nth-child(3){translate:0 -7px;rotate:-45deg}
+nav .brand{transition:letter-spacing .5s var(--ease-out),color .3s}
+nav .brand:hover{letter-spacing:.24em}
+.lamp::before{display:inline-block;animation:lamp-sway 3.4s ease-in-out infinite;transform-origin:50% 0}
+@keyframes lamp-sway{50%{rotate:-14deg}}
+#torch:checked ~ .page .lamp{box-shadow:0 0 22px var(--glow),0 0 0 3px rgba(42,28,13,.25)}
+
+/* ---------- Overlay menu: a circle of light opens from the button ---------- */
+.menu:target{animation:menu-open .8s var(--ease-out) both}
+@keyframes menu-open{
+  from{clip-path:circle(0% at 70px 28px);opacity:.6}
+  to{clip-path:circle(150% at 70px 28px);opacity:1}}
+.menu{background:radial-gradient(ellipse at 50% 0%,rgba(212,169,55,.2),transparent 60%),rgba(10,7,4,.99)}
+.menu-chakra{animation:spin 26s linear infinite}
+.menu h2,.menu-sub{animation:rise-in .8s .25s var(--ease-out) backwards}
+.menu-sub{animation-delay:.38s}
+.menu-close{animation:rise-in .6s .3s var(--ease-out) backwards}
+.menu-close:hover{rotate:6deg}
+/* items glide in one by one (the old fade used `transform`, which blocked the hover slide) */
+.menu li a{animation:menu-item .7s var(--ease-out) backwards;animation-delay:calc(.3s + var(--i) * 60ms);position:relative;overflow:hidden}
+@keyframes menu-item{from{opacity:0;translate:-40px 0;scale:.96}}
+.menu li a::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 35%,rgba(255,235,170,.3) 50%,transparent 65%);
+  translate:-120% 0;transition:translate .7s var(--ease-out);pointer-events:none}
+.menu li a:hover::after{translate:120% 0}
+.menu li a:hover span{rotate:360deg;scale:1.15}
+.menu li a span{display:inline-block;transition:rotate .6s var(--ease-out),scale .3s,color .3s}
+
+@keyframes rise-in{from{opacity:0;translate:0 24px}}
+
+/* =====================================================
+   HERO
+   ===================================================== */
+/* a slow field of embers rising behind the title (three layers, scattered dots) */
+.hero{background-image:
+    radial-gradient(circle at 12% 18%,#ffb347 0 2px,transparent 4px),radial-gradient(circle at 61% 52%,#ffd978 0 1.5px,transparent 3px),
+    radial-gradient(circle at 83% 87%,#ff8a3d 0 2.5px,transparent 5px),radial-gradient(circle at 36% 74%,#ffd978 0 1.5px,transparent 3px),
+    radial-gradient(circle at 24% 43%,#ff8a3d 0 2px,transparent 4px),radial-gradient(circle at 91% 21%,#ffb347 0 1.5px,transparent 3px),
+    radial-gradient(circle at 47% 9%,#ffd978 0 1px,transparent 2.5px),radial-gradient(circle at 70% 31%,#ffb347 0 2px,transparent 4px),
+    radial-gradient(circle at 8% 90%,#ffd978 0 1.5px,transparent 3px),radial-gradient(circle at 55% 93%,#ff8a3d 0 2px,transparent 4px),
+    radial-gradient(ellipse at 50% 120%,rgba(154,49,38,.35),transparent 60%);
+  background-size:
+    640px 720px,640px 720px,640px 720px,640px 720px,
+    480px 560px,480px 560px,480px 560px,
+    380px 440px,380px 440px,380px 440px,100% 100%;
+  background-repeat:repeat,repeat,repeat,repeat,repeat,repeat,repeat,repeat,repeat,repeat,no-repeat;
+  animation:embers 30s linear infinite}
+@keyframes embers{to{background-position:
+  0 -720px,0 -720px,0 -720px,0 -720px,
+  0 -560px,0 -560px,0 -560px,
+  0 -440px,0 -440px,0 -440px,0 0}}
+
+/* staggered entrance (after the splash) */
+.hero .eyebrow,.hero h1,.hero .tag,.hero .btn,.hero .fact{animation:hero-in 1.2s var(--ease-out) backwards}
+.hero .eyebrow{animation-delay:1.9s}
+.hero h1{animation-delay:2.05s}
+.hero .tag{animation-delay:2.25s}
+.hero .btn{animation-delay:2.45s}
+.hero .fact{animation-delay:2.6s}
+@keyframes hero-in{from{opacity:0;translate:0 40px;scale:.96}}
+
+/* the title: gold light slides across the second word */
+.hero h1 span{
+  background:linear-gradient(100deg,#9a6c14 20%,#fff0b3 40%,#d4a937 50%,#fff0b3 60%,#9a6c14 80%);
+  background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:none;filter:drop-shadow(0 0 16px var(--glow));
+  animation:shimmer 6s linear infinite}
+@keyframes shimmer{from{background-position:120% 0}to{background-position:-120% 0}}
+
+/* the chakra arrives turning, then breathes light */
+.chakra.spin{animation:spin 60s linear infinite,chakra-glow 4.5s ease-in-out infinite}
+@keyframes chakra-glow{50%{box-shadow:0 0 70px rgba(212,169,55,.6),inset 0 0 34px rgba(212,169,55,.5)}}
+.hero .chakra.spin{animation:spin 60s linear infinite,chakra-glow 4.5s ease-in-out infinite,chakra-in 1.6s 1.7s var(--ease-spring) backwards}
+@keyframes chakra-in{from{opacity:0;scale:.3}}
+.menu .chakra.spin{animation:spin 26s linear infinite,chakra-glow 4.5s ease-in-out infinite}
+
+/* buttons: light sweep + spring press */
+.btn{position:relative;overflow:hidden;transition:background .3s,color .3s,box-shadow .3s,scale .3s var(--ease-spring),letter-spacing .4s var(--ease-out)}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 35%,rgba(255,240,180,.55) 50%,transparent 65%);
+  translate:-120% 0;transition:translate .8s var(--ease-out)}
+.btn:hover{scale:1.06;letter-spacing:.2em}
+.btn:hover::after{translate:120% 0}
+.btn:active{scale:.96}
+
+.tool-btn{transition:background .3s,color .3s,box-shadow .3s,transform .25s var(--ease-spring)}
+.tool-btn:hover{transform:translateY(-3px)}
+.tool-btn:active{transform:scale(.93)}
+
+/* ribbon fades at its edges */
+.ribbon{-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+
+/* =====================================================
+   SCROLL-DRIVEN MOTION (newer browsers; others see the finished page)
+   ===================================================== */
+@supports (animation-timeline:view()){
+
+  /* hero parallax: the title and chakra drift slower than the page */
+  .hero h1{animation:hero-in 1.2s 2.05s var(--ease-out) backwards,parallax-a linear both;
+    animation-timeline:auto,view();animation-range:normal,exit 0% exit 100%}
+  .hero .chakra.spin{animation:spin 60s linear infinite,chakra-glow 4.5s ease-in-out infinite,chakra-in 1.6s 1.7s var(--ease-spring) backwards,parallax-b linear both;
+    animation-timeline:auto,auto,auto,view();animation-range:normal,normal,normal,exit 0% exit 100%}
+  @keyframes parallax-a{to{translate:0 70px}}
+  @keyframes parallax-b{to{translate:0 130px;opacity:.2}}
+
+  /* generic reveal: replaces the old transform-based one */
+  .reveal{animation:reveal-up linear both;animation-timeline:view();animation-range:entry 0% entry 80%}
+  @keyframes reveal-up{from{opacity:0;translate:0 50px;scale:.97}to{opacity:1;translate:none;scale:none}}
+
+  /* section titles: blur-in, and the gold rules grow outwards */
+  .title h2{animation:title-in linear both;animation-timeline:view();animation-range:entry 0% entry 90%}
+  @keyframes title-in{from{opacity:0;filter:blur(10px);letter-spacing:.34em}to{opacity:1;filter:none}}
+  .title h2::before,.title h2::after{animation:rule-grow linear both;animation-timeline:view();animation-range:entry 20% entry 100%}
+  @keyframes rule-grow{from{scale:0 1}to{scale:1 1}}
+
+  /* timeline: the line draws itself, events slide in from alternating sides */
+  .tl::before{animation:line-draw linear both;animation-timeline:view();animation-range:cover 8% cover 70%;transform-origin:top}
+  @keyframes line-draw{from{scale:1 0}to{scale:1 1}}
+  .ev.reveal{--dx:-80px;animation:ev-in linear both;animation-timeline:view();animation-range:entry 0% entry 75%}
+  .ev.reveal:nth-child(even){--dx:80px}
+  @keyframes ev-in{from{opacity:0;translate:var(--dx) 20px;scale:.94}to{opacity:1;translate:none;scale:none}}
+  .ev::after{animation:node-pop linear both;animation-timeline:view();animation-range:entry 30% entry 100%}
+  @keyframes node-pop{from{scale:0;rotate:-180deg}to{scale:none;rotate:none}}
+
+  /* grids: cards rise in a ripple, one column after another */
+  .flips .flip,.gal .thumb,.tablets .tablet,.legacy .leg,.team .member,.stats>div,.glance>div,.q{
+    animation:card-in linear both;animation-timeline:view();animation-range:entry 0% entry 65%}
+  .flips .flip:nth-child(3n+2),.gal .thumb:nth-child(3n+2),.tablets .tablet:nth-child(3n+2),.legacy .leg:nth-child(3n+2),.team .member:nth-child(3n+2),.stats>div:nth-child(3n+2){animation-range:entry 8% entry 73%}
+  .flips .flip:nth-child(3n),.gal .thumb:nth-child(3n),.tablets .tablet:nth-child(3n),.legacy .leg:nth-child(3n),.team .member:nth-child(3n),.stats>div:nth-child(3n){animation-range:entry 16% entry 81%}
+  @keyframes card-in{from{opacity:0;translate:0 60px;scale:.9;rotate:2deg}to{opacity:1;translate:none;scale:none;rotate:none}}
+
+  /* map and handbook frames settle in */
+  .mapbox,.score,.why,.city-box{animation:card-in linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
+
+  /* the handbook is never animated from outside: its drag-to-fold maths needs exact geometry */
+  .handbook.reveal{animation:none}
+
+  /* footer rises */
+  footer{animation:reveal-up linear both;animation-timeline:view();animation-range:entry 0% entry 60%}
+
+  /* the top bar gets a shadow once you scroll */
+  nav{animation:nav-drop .9s 1.7s var(--ease-out) backwards,nav-shadow linear both;
+    animation-timeline:auto,scroll(root);animation-range:normal,0 220px}
+  @keyframes nav-shadow{to{box-shadow:0 10px 34px rgba(0,0,0,.65)}}
+
+  /* ornament between sections: a rule that draws from the middle */
+  section+section{position:relative}
+  section+section::before{content:"";position:absolute;top:20px;left:12%;right:12%;height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    animation:rule-grow linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+  section+section::after{content:"";position:absolute;top:15px;left:50%;width:11px;height:11px;margin-left:-5.5px;
+    background:var(--gold);rotate:45deg;box-shadow:0 0 14px var(--glow);
+    animation:diamond linear both;animation-timeline:view();animation-range:entry 20% entry 100%}
+  @keyframes diamond{from{scale:0;opacity:0}to{scale:1;opacity:1}}
+}
+
+/* =====================================================
+   SECTION DETAILS
+   ===================================================== */
+/* big picture cards: soft glow on hover */
+.flip .in{transition:transform .9s var(--ease-out),filter .4s}
+.flip:hover .in{filter:drop-shadow(0 0 18px var(--glow))}
+
+/* timeline cards: light sweep */
+.card{position:relative;overflow:hidden;transition:transform .45s var(--ease-out),box-shadow .45s,border-color .35s}
+.card::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,235,170,.16) 50%,transparent 60%);
+  translate:-130% 0;transition:translate .9s var(--ease-out)}
+.ev:hover .card::before{translate:130% 0}
+.ev::after{transition:transform .6s var(--ease-spring),background .3s,color .3s,box-shadow .3s}
+
+/* rulers: panel opens with a flourish, content staggers in, seal wears a turning ring */
+/* only the selected panel animates in (all three panels share one grid cell, so the page never jumps) */
+:is(#r1:checked ~ .panels .p1,#r2:checked ~ .panels .p2,#r3:checked ~ .panels .p3){animation:panel-in .9s var(--ease-out) backwards}
+@keyframes panel-in{from{opacity:0;translate:0 30px;scale:.97;clip-path:inset(0 0 100% 0 round 10px)}to{opacity:1;clip-path:inset(-50px round 10px)}}
+:is(#r1:checked ~ .panels .p1,#r2:checked ~ .panels .p2,#r3:checked ~ .panels .p3) :is(h3,.dates,li,.fun){animation:rise-in .7s var(--ease-out) backwards}
+:is(#r1:checked ~ .panels .p1,#r2:checked ~ .panels .p2,#r3:checked ~ .panels .p3) h3{animation-delay:.25s}
+:is(#r1:checked ~ .panels .p1,#r2:checked ~ .panels .p2,#r3:checked ~ .panels .p3) .dates{animation-delay:.33s}
+:is(#r1:checked ~ .panels .p1,#r2:checked ~ .panels .p2,#r3:checked ~ .panels .p3) li:nth-child(1){animation-delay:.42s}
+:is(#r1:checked ~ .panels .p1,#r2:checked ~ .panels .p2,#r3:checked ~ .panels .p3) li:nth-child(2){animation-delay:.5s}
+:is(#r1:checked ~ .panels .p1,#r2:checked ~ .panels .p2,#r3:checked ~ .panels .p3) li:nth-child(3){animation-delay:.58s}
+:is(#r1:checked ~ .panels .p1,#r2:checked ~ .panels .p2,#r3:checked ~ .panels .p3) li:nth-child(4){animation-delay:.66s}
+:is(#r1:checked ~ .panels .p1,#r2:checked ~ .panels .p2,#r3:checked ~ .panels .p3) .fun{animation-delay:.76s}
+.seal{position:relative}
+.seal::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px dashed rgba(255,217,120,.65);animation:spin 24s linear infinite}
+.tabbar label{transition:background .3s,color .3s,border-color .3s,box-shadow .3s,transform .3s var(--ease-spring)}
+.tabbar label:active,.mapbtns label:active{scale:.94}
+
+/* map: a faint radar sweep, floating sea label, glowing frame */
+.mapbox{position:relative;animation:map-glow 6s ease-in-out infinite}
+.mapbox::after{content:"";position:absolute;inset:-50%;pointer-events:none;opacity:.14;mix-blend-mode:screen;
+  background:conic-gradient(from 0deg,transparent 0 80%,#ffd978 100%);animation:spin 9s linear infinite}
+@keyframes map-glow{50%{box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 44px rgba(212,169,55,.3)}}
+.sealabel{animation:drift 7s ease-in-out infinite}
+@keyframes drift{50%{translate:0 -4px;opacity:.5}}
+.mapbtns label{transition:background .3s,color .3s,border-color .3s,transform .3s var(--ease-spring)}
+.n{animation:rise-in .7s var(--ease-out) both}
+.city-box{transition:box-shadow .4s}
+.city circle{transition:r .3s var(--ease-spring),fill .25s}
+
+/* accordion: panels open and close smoothly (Chrome/Edge/Safari 18.4+) */
+@supports selector(::details-content){
+  details{interpolate-size:allow-keywords}
+  details::details-content{block-size:0;overflow:clip;opacity:0;
+    transition:block-size .55s var(--ease-out),opacity .5s,content-visibility .55s allow-discrete}
+  details[open]::details-content{block-size:auto;opacity:1}
+}
+summary{transition:padding-left .35s var(--ease-out),color .3s}
+details:hover summary{padding-left:28px;color:var(--gold)}
+details .body{animation:rise-in .6s var(--ease-out) backwards}
+summary::after{transition:transform .5s var(--ease-spring),background .3s,color .3s}
+
+/* edicts: light sweeps over the stone, lines shimmer */
+.tablet::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 35%,rgba(255,225,150,.2) 50%,transparent 65%);
+  translate:-120% 0;transition:translate 1s var(--ease-out)}
+.tablet:hover::after,.tablet:focus::after{translate:120% 0}
+.tablet{transition:transform .5s var(--ease-out),box-shadow .5s}
+.tablet .carve .lines{animation:chisel 4s ease-in-out infinite}
+@keyframes chisel{50%{opacity:.3}}
+.read-btn{transition:background .3s,color .3s,scale .3s var(--ease-spring)}
+.read-btn:hover{scale:1.08}
+
+/* treasures: spring lift, pop-ups scale in, the art floats */
+.thumb{transition:transform .5s var(--ease-spring),box-shadow .4s}
+.thumb svg{transition:transform .7s var(--ease-spring)}
+.thumb::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(110deg,transparent 40%,rgba(255,235,170,.18) 50%,transparent 60%);
+  translate:-130% 0;transition:translate .9s var(--ease-out)}
+.thumb:hover::after{translate:130% 0}
+.modal:target{animation:fade-only .35s both}
+@keyframes fade-only{from{opacity:0}}
+.modal:target .box{animation:modal-pop .6s var(--ease-spring) both}
+@keyframes modal-pop{from{opacity:0;translate:0 40px;scale:.8}}
+.modal:target svg.art,.modal:target .chakra{animation:float 5s ease-in-out infinite}
+.modal:target .chakra{animation:spin 30s linear infinite}
+@keyframes float{50%{translate:0 -10px}}
+.modal .close{transition:background .3s,rotate .4s var(--ease-spring)}
+.modal .close:hover{rotate:6deg}
+
+/* legacy cards */
+.leg{transition:transform .5s var(--ease-spring),border-color .3s,box-shadow .4s}
+.leg::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,var(--gold),var(--crimson));
+  scale:0 1;transform-origin:left;transition:scale .6s var(--ease-out)}
+.leg:hover::after{scale:1 1}
+
+/* quiz: correct answers pop, wrong ones shake */
+.q label{transition:transform .3s var(--ease-spring),background .3s,border-color .3s}
+.q input.ok:checked + label{animation:correct .6s var(--ease-spring)}
+.q input.no:checked + label{animation:wrong .5s}
+@keyframes correct{0%{scale:.92}60%{scale:1.05}100%{scale:1}}
+@keyframes wrong{20%{translate:-8px 0}40%{translate:8px 0}60%{translate:-5px 0}80%{translate:5px 0}}
+.score{transition:box-shadow .4s}
+.score-message{animation:rise-in .5s var(--ease-out) backwards}
+
+/* animated gold borders that travel round the frame */
+.why,.score{border:3px solid transparent;
+  background:linear-gradient(160deg,var(--crimson),#4d1510) padding-box,
+             conic-gradient(from var(--angle),#ffd978,#9a3126,#d4a937,#4d1510,#ffd978) border-box;
+  animation:border-turn 7s linear infinite}
+.score{background:linear-gradient(var(--bg2),var(--bg2)) padding-box,
+             conic-gradient(from var(--angle),#ffd978,#9a3126,#d4a937,#4d1510,#ffd978) border-box}
+@keyframes border-turn{to{--angle:360deg}}
+
+/* about: crests glow, stats lift */
+.member{transition:transform .55s var(--ease-spring),box-shadow .45s}
+.crest{animation:crest-glow 4s ease-in-out infinite}
+@keyframes crest-glow{50%{box-shadow:0 8px 20px rgba(0,0,0,.5),0 0 28px rgba(255,217,120,.55),inset 0 0 18px rgba(0,0,0,.4)}}
+.stats div{transition:transform .4s var(--ease-spring),border-color .3s,box-shadow .3s}
+.glance div{transition:transform .35s var(--ease-spring),border-color .3s}
+.glance div:hover{translate:0 -4px;border-left-color:var(--crimson)}
+
+/* top button pulses with light (it stays still, so it is easy to click) */
+.top-btn.visible{animation:top-float 3s ease-in-out infinite}
+@keyframes top-float{50%{box-shadow:0 0 30px 4px var(--glow)}}
+.top-btn:hover{scale:1.12}
+
+/* footer title shimmer */
+footer .cin{background:linear-gradient(100deg,#9a6c14 30%,#fff0b3 50%,#9a6c14 70%);background-size:250% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 7s linear infinite}
+
+/* =====================================================
+   SMALL SCREENS AND REDUCED MOTION
+   ===================================================== */
+@media (max-width:760px){
+  .ev.reveal,.ev.reveal:nth-child(even){--dx:0px}
+  .page::before{opacity:.3}
+  body::before{padding-top:130px}
+}
+@media (prefers-reduced-motion:reduce){
+  body::before,body::after,.page::before{display:none}
+}
+
+/* ---------- About Us pop-ups ---------- */
+.pmodal:target{animation:fade-only .35s both}
+.pmodal:target .pbox{animation:modal-pop .6s var(--ease-spring) both}
+.pmodal:target .crest.big{animation:crest-in 1s var(--ease-spring) backwards,crest-glow 4s 1s ease-in-out infinite}
+.pmodal:target .prole,.pmodal:target h3,.pmodal:target .pdesc,.pmodal:target .chips li,.pmodal:target .pnav{animation:rise-in .7s var(--ease-out) backwards}
+.pmodal:target .prole{animation-delay:.25s}
+.pmodal:target h3{animation-delay:.33s}
+.pmodal:target .pdesc{animation-delay:.42s}
+.pmodal:target .chips li:nth-child(1){animation-delay:.52s}
+.pmodal:target .chips li:nth-child(2){animation-delay:.6s}
+.pmodal:target .chips li:nth-child(3){animation-delay:.68s}
+.pmodal:target .pnav{animation-delay:.76s}
+@keyframes crest-in{from{opacity:0;scale:.3;rotate:-270deg}}
+.prole{background:linear-gradient(100deg,rgba(212,169,55,.12) 30%,rgba(255,240,180,.35) 50%,rgba(212,169,55,.12) 70%);background-size:250% 100%;animation:shimmer 5s linear infinite}
+.member .more{transition:background .3s,color .3s,letter-spacing .4s var(--ease-out)}
+.member:hover .more{letter-spacing:.22em}

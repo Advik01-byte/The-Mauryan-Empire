@@ -22,7 +22,7 @@ body{margin:0;background:#120e09}
     radial-gradient(ellipse at 92% 100%,rgba(154,49,38,.16),transparent 50%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .8 0 0 0 0 .65 0 0 0 0 .4 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   transition:background-color .6s,color .6s;
-  overflow-x:hidden;
+  overflow-x:clip;
 }
 #torch:checked ~ .page{
   --bg:#e8dbb7; --bg2:#f4ebd0; --ink:#2a1c0d; --muted:#6b5535;
@@ -65,3 +65,15 @@ footer{margin-top:60px;padding:40px 22px;text-align:center;border-top:3px double
 footer .cin{color:var(--gold);font-size:1.1rem;letter-spacing:.12em}
 footer p{max-width:700px;margin:8px auto}
 
+/* ---------- Buttons shared by the JavaScript features ---------- */
+.tool-btn{cursor:pointer;font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:10px 18px;border:2px solid var(--gold);background:var(--bg2);color:var(--gold);border-radius:4px;transition:.3s}
+.tool-btn:hover,.tool-btn.is-active{background:var(--gold);color:#120e09;box-shadow:0 0 18px var(--glow)}
+.tool-btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+/* ---------- Back to top button (main.js) ---------- */
+.top-btn{position:fixed;right:18px;bottom:18px;z-index:120;width:46px;height:46px;border-radius:50%;
+  border:2px solid var(--gold);background:var(--bg2);color:var(--gold);font-size:1.3rem;cursor:pointer;
+  opacity:0;pointer-events:none;transform:translateY(14px);transition:.35s;box-shadow:0 0 16px var(--glow)}
+.top-btn.visible{opacity:1;pointer-events:auto;transform:none}
+.top-btn:hover{background:var(--gold);color:#120e09}

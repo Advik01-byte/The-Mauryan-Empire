@@ -4,7 +4,6 @@ nav{position:sticky;top:0;z-index:150;display:flex;align-items:center;justify-co
   gap:14px;padding:10px 20px;background:rgba(10,7,4,.92);border-bottom:2px solid var(--gold);
   backdrop-filter:blur(6px)}
 #torch:checked ~ .page nav{background:rgba(58,40,16,.94)}
-nav .links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
 nav a{color:#eadfc3;text-decoration:none;font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.12em;
   text-transform:uppercase;padding:6px 10px;border-radius:4px;white-space:nowrap;transition:.25s}
 nav a:hover{background:var(--gold);color:#120e09}

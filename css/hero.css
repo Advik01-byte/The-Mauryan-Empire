@@ -36,3 +36,7 @@
 .ribbon b{color:#ffd978;margin:0 10px}
 @keyframes marq{to{transform:translateX(-50%)}}
 
+/* hero.js: typing tagline + fact of the day */
+.hero .tag{min-height:3.4em}
+.fact{max-width:620px;margin:26px auto 0;color:var(--muted);font-style:italic;font-size:1.05rem}
+.fact:empty{display:none}

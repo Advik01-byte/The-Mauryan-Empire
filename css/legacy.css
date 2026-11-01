@@ -8,3 +8,7 @@
 .leg h3{color:var(--gold);font-size:1.1rem;margin-bottom:6px}
 .leg p{font-size:1rem;color:var(--muted)}
 
+/* legacy.js: "Did you know?" box */
+.fact-box{max-width:700px;margin:30px auto 0;text-align:center}
+.fact-text{margin-top:16px;padding:14px 20px;background:var(--bg2);border:1px solid var(--line);border-left:5px solid var(--verd);border-radius:6px}
+.fact-text:empty{display:none}

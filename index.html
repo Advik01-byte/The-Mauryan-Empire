@@ -22,6 +22,8 @@
 <link rel="stylesheet" href="css/legacy.css">
 <link rel="stylesheet" href="css/quiz.css">
 <link rel="stylesheet" href="css/about.css">
+<link rel="stylesheet" href="css/compare.css">
+<link rel="stylesheet" href="css/effects.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
 
@@ -100,13 +102,14 @@
       <li style="--i:2"><a href="#timeline"><span>03</span>Timeline</a></li>
       <li style="--i:3"><a href="#rulers"><span>04</span>Three Rulers</a></li>
       <li style="--i:4"><a href="#map"><span>05</span>Empire Map</a></li>
-      <li style="--i:5"><a href="#life"><span>06</span>Daily Life</a></li>
-      <li style="--i:6"><a href="#dhamma"><span>07</span>Edicts</a></li>
-      <li style="--i:7"><a href="#treasure"><span>08</span>Treasures</a></li>
-      <li style="--i:8"><a href="#handbook"><span>09</span>Handbook</a></li>
-      <li style="--i:9"><a href="#legacy"><span>10</span>Why It Matters</a></li>
-      <li style="--i:10"><a href="#quiz"><span>11</span>Quiz</a></li>
-      <li style="--i:11"><a href="#about"><span>12</span>About Us</a></li>
+      <li style="--i:5"><a href="#compare"><span>06</span>War to Peace</a></li>
+      <li style="--i:6"><a href="#life"><span>07</span>Daily Life</a></li>
+      <li style="--i:7"><a href="#dhamma"><span>08</span>Edicts</a></li>
+      <li style="--i:8"><a href="#treasure"><span>09</span>Treasures</a></li>
+      <li style="--i:9"><a href="#handbook"><span>10</span>Handbook</a></li>
+      <li style="--i:10"><a href="#legacy"><span>11</span>Why It Matters</a></li>
+      <li style="--i:11"><a href="#quiz"><span>12</span>Quiz</a></li>
+      <li style="--i:12"><a href="#about"><span>13</span>About Us</a></li>
     </ul>
   </div>
 </div>
@@ -118,6 +121,7 @@
   <h1>The Mauryan <span>Empire</span></h1>
   <p class="tag">How a young outsider, a brilliant teacher and a king who chose peace built India's first great empire.</p>
   <a class="btn" href="#story">Begin the Journey</a>
+  <p class="fact js-fact"></p>
 </header>
 
 <div class="ribbon" aria-hidden="true">
@@ -131,6 +135,10 @@
 <section id="story">
   <div class="title reveal"><h2>The Big Picture</h2><p>Hover (or tap) each card to turn it over</p></div>
   <p class="lead reveal">More than 2,300 years ago, northern India was divided into many kingdoms. The Mauryas united most of the subcontinent under one government for the first time. They built roads, cities and a powerful army, and one of their emperors, Ashoka, left messages on stone that we can still read today.</p>
+  <div class="card-tools reveal">
+    <button class="tool-btn js-flip-all">Flip all</button>
+    <button class="tool-btn js-unflip-all">Flip all back</button>
+  </div>
   <div class="flips reveal">
     <div class="flip" tabindex="0"><div class="in">
       <div class="face front"><small>FOUNDED</small><strong>c. 322 BCE</strong><em>Who started it?</em></div>
@@ -154,15 +162,22 @@
 <!-- ================= TIMELINE ================= -->
 <section id="timeline">
   <div class="title reveal"><h2>Timeline of the Empire</h2><p>"c." means circa, or "around". Dates are approximate.</p></div>
+  <div class="filters reveal">
+    <button class="tool-btn js-filter is-active" data-ruler="all">All</button>
+    <button class="tool-btn js-filter" data-ruler="chandragupta">Chandragupta</button>
+    <button class="tool-btn js-filter" data-ruler="bindusara">Bindusara</button>
+    <button class="tool-btn js-filter" data-ruler="ashoka">Ashoka</button>
+    <button class="tool-btn js-filter" data-ruler="after">After Ashoka</button>
+  </div>
   <div class="tl">
-    <div class="ev reveal"><div class="card"><div class="yr">c. 322 BCE</div><h3>Chandragupta Takes Pataliputra</h3><p>With Chanakya's plans, Chandragupta defeats the Nanda king and becomes the first Mauryan emperor.</p></div></div>
-    <div class="ev reveal"><div class="card"><div class="yr">c. 305 BCE</div><h3>Face-off with Seleucus</h3><p>Seleucus, a general of Alexander, tries to win lands in the northwest. A treaty follows: Chandragupta gains territory and gives 500 war elephants.</p></div></div>
-    <div class="ev reveal"><div class="card"><div class="yr">c. 297 BCE</div><h3>Bindusara Becomes Emperor</h3><p>Chandragupta's son rules and pushes the empire further south into the Deccan.</p></div></div>
-    <div class="ev reveal"><div class="card"><div class="yr">c. 268 BCE</div><h3>Ashoka Takes the Throne</h3><p>Bindusara's son Ashoka becomes emperor and rules from Pataliputra.</p></div></div>
-    <div class="ev reveal"><div class="card"><div class="yr">c. 261 BCE</div><h3>The Kalinga War</h3><p>Ashoka conquers Kalinga (today's Odisha). His own edict says around 100,000 people were killed. He is filled with sorrow.</p></div></div>
-    <div class="ev reveal"><div class="card"><div class="yr">c. 250 BCE (tradition)</div><h3>Messengers of Peace</h3><p>Buddhist teachings travel to Sri Lanka and beyond. Tradition says Ashoka's son Mahinda and daughter Sanghamitta carried them.</p></div></div>
-    <div class="ev reveal"><div class="card"><div class="yr">c. 232 BCE</div><h3>Ashoka Dies</h3><p>After about 36 years of rule, the great emperor passes away. The empire slowly weakens.</p></div></div>
-    <div class="ev reveal"><div class="card"><div class="yr">c. 185 BCE</div><h3>The End of the Mauryas</h3><p>The last Mauryan king, Brihadratha, is killed by his army chief Pushyamitra Shunga, who starts the Shunga dynasty.</p></div></div>
+    <div class="ev reveal" data-ruler="chandragupta"><div class="card"><div class="yr">c. 322 BCE</div><h3>Chandragupta Takes Pataliputra</h3><p>With Chanakya's plans, Chandragupta defeats the Nanda king and becomes the first Mauryan emperor.</p></div></div>
+    <div class="ev reveal" data-ruler="chandragupta"><div class="card"><div class="yr">c. 305 BCE</div><h3>Face-off with Seleucus</h3><p>Seleucus, a general of Alexander, tries to win lands in the northwest. A treaty follows: Chandragupta gains territory and gives 500 war elephants.</p></div></div>
+    <div class="ev reveal" data-ruler="bindusara"><div class="card"><div class="yr">c. 297 BCE</div><h3>Bindusara Becomes Emperor</h3><p>Chandragupta's son rules and pushes the empire further south into the Deccan.</p></div></div>
+    <div class="ev reveal" data-ruler="ashoka"><div class="card"><div class="yr">c. 268 BCE</div><h3>Ashoka Takes the Throne</h3><p>Bindusara's son Ashoka becomes emperor and rules from Pataliputra.</p></div></div>
+    <div class="ev reveal" data-ruler="ashoka"><div class="card"><div class="yr">c. 261 BCE</div><h3>The Kalinga War</h3><p>Ashoka conquers Kalinga (today's Odisha). His own edict says around 100,000 people were killed. He is filled with sorrow.</p></div></div>
+    <div class="ev reveal" data-ruler="ashoka"><div class="card"><div class="yr">c. 250 BCE (tradition)</div><h3>Messengers of Peace</h3><p>Buddhist teachings travel to Sri Lanka and beyond. Tradition says Ashoka's son Mahinda and daughter Sanghamitta carried them.</p></div></div>
+    <div class="ev reveal" data-ruler="ashoka"><div class="card"><div class="yr">c. 232 BCE</div><h3>Ashoka Dies</h3><p>After about 36 years of rule, the great emperor passes away. The empire slowly weakens.</p></div></div>
+    <div class="ev reveal" data-ruler="after"><div class="card"><div class="yr">c. 185 BCE</div><h3>The End of the Mauryas</h3><p>The last Mauryan king, Brihadratha, is killed by his army chief Pushyamitra Shunga, who starts the Shunga dynasty.</p></div></div>
   </div>
 </section>
 
@@ -248,19 +263,19 @@
           <path d="M0 -26V26M-26 0H26"/><circle r="9"/><text x="-4" y="-32" fill="var(--gold)" stroke="none" font-family="Cinzel" font-size="13">N</text>
         </g>
 
-        <g class="city" tabindex="0" transform="translate(180 85)"><circle class="ring" r="7"/><circle r="7"/>
+        <g class="city" tabindex="0" transform="translate(180 85)" data-name="Taxila" data-info="A famous centre of learning in the northwest. It was an important provincial capital, linked to Pataliputra by the royal road."><circle class="ring" r="7"/><circle r="7"/>
           <g class="tip" transform="translate(14 -54)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Taxila</text><text class="s" x="9" y="36">A famous centre of learning</text></g></g>
-        <g class="city" tabindex="0" transform="translate(385 112)"><circle class="ring" r="7"/><circle r="7"/>
+        <g class="city" tabindex="0" transform="translate(385 112)" data-name="Lumbini" data-info="Where the Buddha was born. An Ashokan pillar stands there."><circle class="ring" r="7"/><circle r="7"/>
           <g class="tip" transform="translate(-120 -58)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Lumbini</text><text class="s" x="9" y="36">Where the Buddha was born</text></g></g>
-        <g class="city" tabindex="0" transform="translate(400 170)"><circle class="ring" r="7"/><circle r="7"/>
+        <g class="city" tabindex="0" transform="translate(400 170)" data-name="Pataliputra" data-info="The capital, near where the Ganga and Son rivers meet (modern Patna). Megasthenes described its wooden wall with 64 gates and 570 towers."><circle class="ring" r="7"/><circle r="7"/>
           <g class="tip" transform="translate(-205 14)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Pataliputra</text><text class="s" x="9" y="36">The capital (modern Patna)</text></g></g>
-        <g class="city" tabindex="0" transform="translate(260 262)"><circle class="ring" r="7"/><circle r="7"/>
+        <g class="city" tabindex="0" transform="translate(260 262)" data-name="Ujjain" data-info="A provincial capital in the west. Tradition says Ashoka governed here as a prince."><circle class="ring" r="7"/><circle r="7"/>
           <g class="tip" transform="translate(14 -54)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Ujjain</text><text class="s" x="9" y="36">Western provincial capital</text></g></g>
-        <g class="city" tabindex="0" transform="translate(112 288)"><circle class="ring" r="7"/><circle r="7"/>
+        <g class="city" tabindex="0" transform="translate(112 288)" data-name="Girnar" data-info="In Gujarat. One of Ashoka&#39;s major rock edicts is carved here."><circle class="ring" r="7"/><circle r="7"/>
           <g class="tip" transform="translate(14 12)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Girnar</text><text class="s" x="9" y="36">An Ashokan rock edict is here</text></g></g>
-        <g class="city" tabindex="0" transform="translate(428 312)"><circle class="ring" r="7"/><circle r="7"/>
+        <g class="city" tabindex="0" transform="translate(428 312)" data-name="Tosali (Kalinga)" data-info="A provincial capital in Kalinga, today&#39;s Odisha. This is the land Ashoka conquered in the Kalinga War."><circle class="ring" r="7"/><circle r="7"/>
           <g class="tip" transform="translate(-205 12)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Tosali (Kalinga)</text><text class="s" x="9" y="36">Site of Ashoka's great war</text></g></g>
-        <g class="city" tabindex="0" transform="translate(322 452)"><circle class="ring" r="7"/><circle r="7"/>
+        <g class="city" tabindex="0" transform="translate(322 452)" data-name="Suvarnagiri" data-info="A provincial capital in the south of the empire."><circle class="ring" r="7"/><circle r="7"/>
           <g class="tip" transform="translate(14 -54)"><rect width="190" height="46" rx="4"/><text x="9" y="19">Suvarnagiri</text><text class="s" x="9" y="36">Southern provincial capital</text></g></g>
 
         <g transform="translate(20 600)" font-family="Cinzel" font-size="11" fill="var(--ink)">
@@ -275,13 +290,71 @@
       <p class="n n2"><b class="cin">Bindusara adds:</b> Large parts of the Deccan plateau, taking the empire deep into the south.</p>
       <p class="n n3"><b class="cin">Ashoka adds:</b> Kalinga on the east coast, the last great conquest of the Mauryas. After this war, Ashoka stopped conquering.</p>
     </div>
+    <div class="city-box">
+      <h3 class="js-city-name">City stories</h3>
+      <p class="js-city-info">Click a glowing city on the map to read about it.</p>
+    </div>
     <p class="mapcap">Hand-drawn, simplified map. Not to scale. Borders are approximate.</p>
   </div>
+</section>
+
+<!-- ================= WAR TO PEACE (before / after slider) ================= -->
+<section id="compare">
+  <div class="title reveal"><h2>From War to Peace</h2><p>Drag the golden bar to see what changed after Kalinga</p></div>
+  <p class="lead reveal">In about 261 BCE Ashoka won a terrible war in Kalinga. Afterwards he carved that he felt deep sorrow, and he chose a new way to rule that he called <b>dhamma</b>: kindness, honesty and respect for everyone. Slide from the battlefield to the peaceful empire he tried to build.</p>
+
+  <div class="compare reveal">
+    <input class="sr" type="radio" name="cmp" id="cp-war" data-pos="96" aria-label="Show the war">
+    <input class="sr" type="radio" name="cmp" id="cp-split" data-pos="50" aria-label="Show both" checked>
+    <input class="sr" type="radio" name="cmp" id="cp-peace" data-pos="4" aria-label="Show the peace">
+
+    <div class="cmp-frame js-compare">
+      <img class="cmp-img peace" src="images/peace.jpg" alt="Peace after dhamma: Ashoka in white and gold robes stands calmly by a sunlit river with lotus flowers, with temples and Ashoka pillars topped by lions in the distance" draggable="false">
+      <img class="cmp-img war" src="images/war.jpg" alt="War before dhamma: a weary king in armour stands on a battlefield strewn with broken weapons, shields and wheels, under a torn banner and smoky skies" draggable="false">
+      <span class="cmp-tag war">Before<small>War, c. 261 BCE</small></span>
+      <span class="cmp-tag peace">After<small>Dhamma</small></span>
+      <div class="cmp-handle js-compare-handle" role="slider" tabindex="0" aria-label="War to peace slider" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% war, 50% peace"><span>◀ ▶</span></div>
+    </div>
+
+    <div class="cmp-presets">
+      <label for="cp-war">War</label>
+      <label for="cp-split">Split</label>
+      <label for="cp-peace">Peace</label>
+    </div>
+    <p class="cmp-hint">Drag, tap anywhere on the picture, or use the ← → keys.</p>
+  </div>
+
+  <div class="cmp-notes">
+    <div class="cmp-note before reveal">
+      <small>Before</small>
+      <h3>The Kalinga War</h3>
+      <ul>
+        <li>Ashoka's Rock Edict XIII says about 100,000 people were killed and about 150,000 were carried away.<span>Many more died of hunger and sickness.</span></li>
+        <li>He wrote that he felt deep sorrow and regret for the suffering.</li>
+        <li>After this he gave up conquering by war.</li>
+      </ul>
+    </div>
+    <div class="cmp-note after reveal">
+      <small>After</small>
+      <h3>The Way of Dhamma</h3>
+      <ul>
+        <li>Dhamma means right living: kindness, honesty, and care for others.</li>
+        <li>Roads got shade trees, wells and rest houses, and there was medical care for people and animals.<span>Rock Edict II</span></li>
+        <li>Special officers, the <i>dhamma-mahamatras</i>, travelled to look after people's welfare.<span>Rock Edict V</span></li>
+        <li>He asked people to respect all faiths.<span>Rock Edict XII</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="cmp-credit">Images: illustrations provided by our team for this project, not photographs or ancient paintings.</p>
 </section>
 
 <!-- ================= DAILY LIFE (accordion) ================= -->
 <section id="life">
   <div class="title reveal"><h2>Life in the Empire</h2><p>Open each scroll to discover its secrets</p></div>
+  <div class="acc-tools reveal">
+    <button class="tool-btn js-open-all">Open all</button>
+    <button class="tool-btn js-close-all">Close all</button>
+  </div>
   <div class="acc reveal">
     <details name="life" open>
       <summary>A Giant Government</summary>
@@ -317,22 +390,22 @@
   <div class="tablets reveal">
     <div class="tablet" tabindex="0">
       <div class="carve"><small>ROCK EDICT XIII</small><h3>Sorrow for Kalinga</h3><div class="lines"></div></div>
-      <div class="msg"><p>Ashoka says he felt deep regret for the suffering caused by the Kalinga War. From now on, he wants to win people through dhamma, not weapons.</p></div>
+      <div class="msg"><p>Ashoka says he felt deep regret for the suffering caused by the Kalinga War. From now on, he wants to win people through dhamma, not weapons.</p><button class="read-btn js-read">🔊 Read aloud</button></div>
     </div>
     <div class="tablet" tabindex="0">
       <div class="carve"><small>ROCK EDICT II</small><h3>Care for All</h3><div class="lines"></div></div>
-      <div class="msg"><p>Medical care for people and animals, medicinal plants, shade trees along roads, and wells for travellers. A ruler should look after everyone.</p></div>
+      <div class="msg"><p>Medical care for people and animals, medicinal plants, shade trees along roads, and wells for travellers. A ruler should look after everyone.</p><button class="read-btn js-read">🔊 Read aloud</button></div>
     </div>
     <div class="tablet" tabindex="0">
       <div class="carve"><small>PILLAR EDICTS</small><h3>Be Kind</h3><div class="lines"></div></div>
-      <div class="msg"><p>Respect your parents, elders and teachers. Be generous, treat servants kindly, and protect animals from needless harm.</p></div>
+      <div class="msg"><p>Respect your parents, elders and teachers. Be generous, treat servants kindly, and protect animals from needless harm.</p><button class="read-btn js-read">🔊 Read aloud</button></div>
     </div>
     <div class="tablet" tabindex="0">
       <div class="carve"><small>ROCK EDICT XII</small><h3>Respect All Faiths</h3><div class="lines"></div></div>
-      <div class="msg"><p>People should honour each other's beliefs and not insult other faiths. Listening to one another helps everyone live together in peace.</p></div>
+      <div class="msg"><p>People should honour each other's beliefs and not insult other faiths. Listening to one another helps everyone live together in peace.</p><button class="read-btn js-read">🔊 Read aloud</button></div>
     </div>
   </div>
-  <p class="hint">These are my own simple summaries, not word-for-word translations.</p>
+  <p class="hint">These are our own simple summaries, not word-for-word translations.</p>
 </section>
 
 <!-- ================= TREASURE GALLERY ================= -->
@@ -349,7 +422,8 @@
       <svg class="art" viewBox="0 0 200 400"><use href="#pillar"/></svg>
       <div><h3>The Mauryan Pillar</h3>
       <p>Ashoka set up tall, polished sandstone pillars across the empire. Many carried his messages, and some were topped by animals such as lions, bulls or elephants. The famous lion capital from Sarnath is now India's national emblem.</p>
-      <p style="margin-top:8px;color:#b5a27a;font-size:.9rem"><i>This is a simplified drawing made for this project.</i></p></div>
+      <p style="margin-top:8px;color:#b5a27a;font-size:.9rem"><i>This is a simplified drawing made for this project.</i></p>
+      <p class="key-hint">Tip: press the ← and → keys to see the next treasure.</p></div>
     </div>
   </div>
   <div class="modal" id="art2"><a class="back" href="#gallery" aria-label="Close"></a>
@@ -357,14 +431,16 @@
       <svg class="art" viewBox="0 0 200 200"><use href="#coin"/></svg>
       <div><h3>Punch-Marked Coin</h3>
       <p>Mauryan silver coins were not struck with a die. Small symbols were punched into a piece of silver one at a time. Common signs include the sun, a wheel-like shape, a hill with a crescent and a tree inside a railing.</p>
-      <p style="margin-top:8px;color:#b5a27a;font-size:.9rem"><i>A simplified drawing, not a copy of a real coin.</i></p></div>
+      <p style="margin-top:8px;color:#b5a27a;font-size:.9rem"><i>A simplified drawing, not a copy of a real coin.</i></p>
+      <p class="key-hint">Tip: press the ← and → keys to see the next treasure.</p></div>
     </div>
   </div>
   <div class="modal" id="art3"><a class="back" href="#gallery" aria-label="Close"></a>
     <div class="box"><a class="close" href="#gallery">✕ Close</a>
       <div class="chakra spin" style="--s:200px;margin:auto"></div>
       <div><h3>The Dharma Wheel</h3>
-      <p>The wheel stands for the law of dhamma, moving forward. The Ashoka Chakra on India's national flag has 24 spokes. Count them if you like.</p></div>
+      <p>The wheel stands for the law of dhamma, moving forward. The Ashoka Chakra on India's national flag has 24 spokes. Count them if you like.</p>
+      <p class="key-hint">Tip: press the ← and → keys to see the next treasure.</p></div>
     </div>
   </div>
 </section>
@@ -546,6 +622,10 @@
     <div class="leg" data-n="4"><h3>A Model of Governance</h3><p>Provinces, officials, roads and tax records showed how a vast land could be run as one state.</p></div>
     <div class="leg" data-n="5"><h3>Writing Our Past</h3><p>Ashoka's edicts are among the earliest long written records in India and help historians reconstruct his reign.</p></div>
   </div>
+  <div class="fact-box reveal">
+    <button class="tool-btn js-fact-button">Did you know?</button>
+    <p class="fact-text js-fact-text"></p>
+  </div>
 </section>
 
 <!-- ================= QUIZ ================= -->
@@ -608,6 +688,9 @@
     </fieldset>
 
     <div class="score">Your score<small>Change any answer to update your score.</small></div>
+    <p class="score-message js-score-message"></p>
+    <p class="best-score js-best-score"></p>
+    <div class="quiz-tools"><button class="tool-btn js-reset-button">Reset quiz</button></div>
   </div>
 </section>
 
@@ -616,41 +699,81 @@
   <div class="title reveal"><h2>About Us</h2><p>The team behind this project</p></div>
   <p class="about-intro reveal">We are three students who teamed up to explore one of the greatest chapters of Indian history. We read, researched and built this project together to share the story of the Mauryan Empire in a fun and interactive way.</p>
   <div class="team reveal">
-    <div class="member"><div class="crest">AG</div><h3>Advik Goyal</h3><p>Team Member</p></div>
-    <div class="member"><div class="crest">BG</div><h3>Bhuvik Garyali</h3><p>Team Member</p></div>
-    <div class="member"><div class="crest">AB</div><h3>Aadvik Bansal</h3><p>Team Member</p></div>
+    <a class="member" href="#person-advik" aria-label="Advik Goyal, Lead Website Designer. Open details"><div class="crest">AG</div><h3>Advik Goyal</h3><p class="role">Lead Website Designer</p><span class="more">Meet Advik</span></a>
+    <a class="member" href="#person-aadvik" aria-label="Aadvik Bansal, Lead Roleplay Designer. Open details"><div class="crest">AB</div><h3>Aadvik Bansal</h3><p class="role">Lead Roleplay Designer</p><span class="more">Meet Aadvik</span></a>
+    <a class="member" href="#person-bhuvik" aria-label="Bhuvik Garyali, Lead Presentation Designer. Open details"><div class="crest">BG</div><h3>Bhuvik Garyali</h3><p class="role">Lead Presentation Designer</p><span class="more">Meet Bhuvik</span></a>
   </div>
   <div class="why reveal">
     <h3>Why the Mauryas?</h3>
     <p>The Mauryan Empire was the first to bring most of the subcontinent under one government. Ashoka's story is the part we love most: a powerful king who looked at the pain of war and chose peace, and left messages in stone for us to read 2,000 years later.</p>
   </div>
   <div class="stats reveal">
-    <div><strong>8</strong>Timeline events</div>
-    <div><strong>3</strong>Great rulers</div>
-    <div><strong>7</strong>Map cities</div>
-    <div><strong>6</strong>Life topics</div>
-    <div><strong>4</strong>Ashokan edicts</div>
-    <div><strong>6</strong>Quiz questions</div>
+    <div><strong data-target="8">8</strong>Timeline events</div>
+    <div><strong data-target="3">3</strong>Great rulers</div>
+    <div><strong data-target="7">7</strong>Map cities</div>
+    <div><strong data-target="6">6</strong>Life topics</div>
+    <div><strong data-target="4">4</strong>Ashokan edicts</div>
+    <div><strong data-target="6">6</strong>Quiz questions</div>
   </div>
   <div class="glance reveal">
     <div><b>Topic</b>The Mauryan Empire</div>
-    <div><b>Class</b>6</div>
-    <div><b>School</b>[School Name]</div>
+    <div><b>Grade</b>6</div>
+    <div><b>School</b>Scottish High International School</div>
+  </div>
+
+  <!-- Team pop-ups (CSS only, opened with :target) -->
+  <div class="pmodal" id="person-advik" role="dialog" aria-modal="true" aria-labelledby="pt-advik">
+    <a class="back" href="#about" aria-label="Close"></a>
+    <div class="pbox">
+      <a class="close" href="#about">✕ Close</a>
+      <div class="crest big">AG</div>
+      <p class="prole">Lead Website Designer</p>
+      <h3 id="pt-advik">Advik Goyal</h3>
+      <p class="pdesc">Advik leads the look and feel of our website. He is in charge of the dark, antique colours, the page layout, the animations and the interactive features, so that the story of the Mauryas is fun to explore from the first scroll to the last.</p>
+      <ul class="chips"><li>Design</li><li>Layout</li><li>Animation</li></ul>
+      <div class="pnav"><a href="#person-bhuvik">← Bhuvik</a><a href="#person-aadvik">Aadvik →</a></div>
+    </div>
+  </div>
+  <div class="pmodal" id="person-aadvik" role="dialog" aria-modal="true" aria-labelledby="pt-aadvik">
+    <a class="back" href="#about" aria-label="Close"></a>
+    <div class="pbox">
+      <a class="close" href="#about">✕ Close</a>
+      <div class="crest big">AB</div>
+      <p class="prole">Lead Roleplay Designer</p>
+      <h3 id="pt-aadvik">Aadvik Bansal</h3>
+      <p class="pdesc">Aadvik leads our roleplay. He plans the characters, the words they speak and the scenes we act out, from Chandragupta and Chanakya building an empire to Ashoka's change of heart after Kalinga, so that history comes alive on stage.</p>
+      <ul class="chips"><li>Characters</li><li>Script</li><li>Scenes</li></ul>
+      <div class="pnav"><a href="#person-advik">← Advik</a><a href="#person-bhuvik">Bhuvik →</a></div>
+    </div>
+  </div>
+  <div class="pmodal" id="person-bhuvik" role="dialog" aria-modal="true" aria-labelledby="pt-bhuvik">
+    <a class="back" href="#about" aria-label="Close"></a>
+    <div class="pbox">
+      <a class="close" href="#about">✕ Close</a>
+      <div class="crest big">BG</div>
+      <p class="prole">Lead Presentation Designer</p>
+      <h3 id="pt-bhuvik">Bhuvik Garyali</h3>
+      <p class="pdesc">Bhuvik leads our presentation. He shapes how the slides look, decides the order in which we tell the story, and makes sure our ideas are shown clearly and confidently to the judges and the class.</p>
+      <ul class="chips"><li>Slides</li><li>Story order</li><li>Delivery</li></ul>
+      <div class="pnav"><a href="#person-aadvik">← Aadvik</a><a href="#person-advik">Advik →</a></div>
+    </div>
   </div>
 </section>
+
+<!-- Back-to-top button (main.js) -->
+<button class="top-btn js-to-top" aria-label="Back to top">↑</button>
 
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="cin">THE MAURYAN EMPIRE</div>
-  <p>A history project by <b>Advik Goyal, Bhuvik Garyali &amp; Aadvik Bansal</b>, Class 6 · [School Name]</p>
-  <p>Sources to cite: your NCERT history textbook, Encyclopaedia Britannica, and the Archaeological Survey of India website. Dates are approximate and may differ between books.</p>
+  <p>A history project by <b>Advik Goyal, Bhuvik Garyali &amp; Aadvik Bansal</b>, Grade 6 · Scottish High International School</p>
+  <p>Dates are approximate and may differ between books.</p>
   <p><a href="#top">↑ Back to the top</a></p>
 </footer>
 
 </div>
 
-<!-- JavaScript. Only handbook-fold.js has code. The other files are empty, ready for you to fill.
-     Delete all the <script> lines to run with HTML + CSS only. -->
+<!-- JavaScript: one small script per section. The two big ones are the handbook page-fold drag and the war-to-peace slider. -->
 <script src="js/main.js" defer></script>
 <script src="js/navigation.js" defer></script>
 <script src="js/hero.js" defer></script>
@@ -665,5 +788,6 @@
 <script src="js/quiz.js" defer></script>
 <script src="js/about.js" defer></script>
 <script src="js/handbook-fold.js" defer></script>
+<script src="js/compare-slider.js" defer></script>
 </body>
 </html>

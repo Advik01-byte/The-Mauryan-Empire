@@ -20,3 +20,7 @@
 .score::after{content:counter(score) " / 6";color:var(--ink);font-size:2.4rem;display:block;margin-top:4px}
 .score small{display:block;font-family:'IM Fell English',serif;font-size:.95rem;color:var(--muted);margin-top:4px}
 
+/* quiz.js: message, best score and reset button */
+.score-message{text-align:center;font-family:'Cinzel',serif;color:var(--gold);font-size:1.1rem;margin-top:16px;min-height:1.6em}
+.best-score{text-align:center;color:var(--muted);font-style:italic}
+.quiz-tools{text-align:center;margin-top:14px}

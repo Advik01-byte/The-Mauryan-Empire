@@ -21,3 +21,5 @@
 .modal .close:hover{background:#fff}
 .modal .chakra{--s:200px}
 
+/* treasure.js: tip shown inside each pop-up */
+.key-hint{margin-top:10px;color:#b5a27a;font-size:.85rem;font-style:italic}

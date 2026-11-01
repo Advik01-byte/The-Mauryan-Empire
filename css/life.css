@@ -15,3 +15,5 @@ details .body{padding:0 22px 20px;animation:fadein .5s both;color:var(--ink)}
 details .body p+p{margin-top:8px}
 summary:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
 
+/* life.js: open all / close all buttons */
+.acc-tools{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px}

@@ -17,3 +17,6 @@
 .card h3{font-size:1.15rem;margin:2px 0 6px;color:var(--ink)}
 .card p{font-size:1rem;color:var(--muted);line-height:1.5}
 
+/* timeline.js: filter buttons and hidden events */
+.filters{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px}
+.ev.is-hidden{display:none}

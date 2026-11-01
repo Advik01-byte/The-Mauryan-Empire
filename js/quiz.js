@@ -1,23 +1,33 @@
-/* ============================================================
-   quiz.js  —  Quiz.
-   This file has no code yet. The hints below are for you.
-   Method and cheat sheet: see HINTS.md in the main folder.
-   ------------------------------------------------------------
-STARTER FEATURES (do them in this order):
-
-A) Reset button. A full worked example is in HINTS.md. Do this first.
-
-B) A message based on the score
- 1. The score on the page is made by CSS. JavaScript can count it too:
-        document.querySelectorAll('.quiz input.ok:checked').length
- 2. In index.html add under the score:  <p class="js-score-message"></p>
- 3. Listen for 'change' on the quiz:  document.querySelector('.quiz').addEventListener('change', ...)
- 4. Inside: count correct answers, then use if / else if / else:
-        6 = "Perfect!"   4 or 5 = "Great job!"   otherwise = "Read the handbook and try again!"
- 5. Show it with textContent.
-
-C) Save the best score:  localStorage.setItem('best', score)
-   Read it back later with localStorage.getItem('best') (it comes back as text; use Number(...)).
-   ============================================================ */
-
-// Write your code here.
+// Quiz: message by score, best score saved, reset button.
+const quizBox = document.querySelector('.quiz');
+const scoreMessage = document.querySelector('.js-score-message');
+const bestScoreText = document.querySelector('.js-best-score');
+const resetButton = document.querySelector('.js-reset-button');
+function showBestScore() {
+  const best = localStorage.getItem('bestScore');
+  if (best !== null) {
+    bestScoreText.textContent = 'Best score: ' + best + ' / 6';
+  }
+}
+showBestScore();
+quizBox.addEventListener('change', () => {
+  const score = document.querySelectorAll('.quiz input.ok:checked').length;
+  if (score === 6) {
+    scoreMessage.textContent = 'Perfect! You are a Mauryan expert!';
+  } else if (score >= 4) {
+    scoreMessage.textContent = 'Great job! Read the handbook to get them all.';
+  } else {
+    scoreMessage.textContent = 'Keep going! The handbook has the answers.';
+  }
+  const best = Number(localStorage.getItem('bestScore'));
+  if (score > best) {
+    localStorage.setItem('bestScore', score);
+    showBestScore();
+  }
+});
+resetButton.addEventListener('click', () => {
+  document.querySelectorAll('.quiz input').forEach((input) => {
+    input.checked = false;
+  });
+  scoreMessage.textContent = '';
+});

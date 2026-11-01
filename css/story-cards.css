@@ -14,3 +14,6 @@
 .face.back{transform:rotateY(180deg);background:linear-gradient(160deg,var(--crimson),#4d1510);color:#f6e8c6;font-size:1.02rem;line-height:1.5}
 .face::before{content:"";position:absolute;inset:8px;border:1px dashed rgba(212,169,55,.5);border-radius:5px;pointer-events:none}
 
+/* story-cards.js: a clicked card stays flipped, plus the Flip all buttons */
+.flip.is-flipped .in{transform:rotateY(180deg)}
+.card-tools{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:6px}
