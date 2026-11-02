@@ -234,8 +234,8 @@ nav .brand:hover{letter-spacing:.24em}
    SECTION DETAILS
    ===================================================== */
 /* big picture cards: soft glow on hover */
-.flip .in{transition:transform .9s var(--ease-out),filter .4s}
-.flip:hover .in{filter:drop-shadow(0 0 18px var(--glow))}
+.flip .face{transition:box-shadow .4s}
+.flip:hover .face{box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 22px var(--glow)}
 
 /* timeline cards: light sweep */
 .card{position:relative;overflow:hidden;transition:transform .45s var(--ease-out),box-shadow .45s,border-color .35s}
@@ -290,7 +290,7 @@ summary::after{transition:transform .5s var(--ease-spring),background .3s,color 
 .tablet::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(115deg,transparent 35%,rgba(255,225,150,.2) 50%,transparent 65%);
   translate:-120% 0;transition:translate 1s var(--ease-out)}
-.tablet:hover::after,.tablet:focus::after{translate:120% 0}
+.tablet:hover::after{translate:120% 0}
 .tablet{transition:transform .5s var(--ease-out),box-shadow .5s}
 .tablet .carve .lines{animation:chisel 4s ease-in-out infinite}
 @keyframes chisel{50%{opacity:.3}}

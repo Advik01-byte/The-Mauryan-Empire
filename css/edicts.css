@@ -7,7 +7,7 @@
     repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 2px,transparent 2px 7px),
     linear-gradient(170deg,#6d6048,#4b4130 60%,#392f22);
   box-shadow:0 14px 30px rgba(0,0,0,.55),inset 0 0 40px rgba(0,0,0,.5);transition:.4s}
-.tablet:hover,.tablet:focus{transform:translateY(-8px);box-shadow:0 22px 40px rgba(0,0,0,.6),0 0 30px var(--glow)}
+.tablet:hover{transform:translateY(-8px);box-shadow:0 22px 40px rgba(0,0,0,.6),0 0 30px var(--glow)}
 .tablet .carve{position:absolute;inset:0;padding:48px 20px 20px;text-align:center;color:#e5d6ae;
   text-shadow:0 -1px 0 rgba(0,0,0,.8),0 1px 0 rgba(255,255,255,.12)}
 .tablet .carve small{font-family:'Cinzel',serif;letter-spacing:.25em;font-size:.7rem;color:#c9b27a}
@@ -16,7 +16,8 @@
 .tablet .msg{position:absolute;inset:0;padding:40px 22px 20px;background:linear-gradient(180deg,rgba(18,14,9,.96),rgba(60,24,18,.97));
   color:#f6e8c6;font-size:1.02rem;line-height:1.5;transform:translateY(102%);transition:transform .55s cubic-bezier(.2,.8,.2,1);
   display:flex;align-items:center;text-align:center}
-.tablet:hover .msg,.tablet:focus .msg{transform:none}
+@media (hover:hover){.tablet:hover .msg{transform:none}}
+.tablet.is-open .msg{transform:none}
 .hint{text-align:center;color:var(--muted);font-style:italic;font-size:.9rem;margin-top:16px}
 
-.tablet:focus-within .msg{transform:none}
+.tablet:focus-visible{box-shadow:0 0 0 3px var(--gold),0 14px 30px rgba(0,0,0,.55)}
