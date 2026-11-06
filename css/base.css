@@ -82,3 +82,15 @@ footer p{max-width:700px;margin:8px auto}
   opacity:0;pointer-events:none;transform:translateY(14px);transition:.35s;box-shadow:0 0 16px var(--glow)}
 .top-btn.visible{opacity:1;pointer-events:auto;transform:none}
 .top-btn:hover{background:var(--gold);color:#120e09}
+
+/* Sound on / off button (audio.js): bottom-left, above pop-ups so it is always reachable */
+.sound-btn{position:fixed;left:18px;bottom:18px;z-index:400;width:46px;height:46px;padding:0;border-radius:50%;cursor:pointer;
+  display:grid;place-items:center;background:rgba(18,14,9,.88);color:var(--gold);border:2px solid var(--gold);
+  box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 14px var(--glow);transition:background .25s,color .25s,scale .25s,border-color .25s}
+.sound-btn:hover{background:var(--gold);color:#120e09;scale:1.1}
+.sound-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.sound-btn svg{width:24px;height:24px;fill:currentColor;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sound-btn .wave{fill:none}
+.sound-btn[aria-pressed="true"] .ico-off,.sound-btn[aria-pressed="false"] .ico-on{display:none}
+.sound-btn[aria-pressed="false"]{border-color:var(--muted);color:var(--muted);box-shadow:0 6px 18px rgba(0,0,0,.5)}
+.sound-btn[aria-pressed="false"]:hover{background:var(--muted);color:#120e09}

@@ -33,6 +33,7 @@ mauryan-empire-project/
 └── js/                     One script per section
     ├── main.js             Back-to-top button
     ├── center-view.js      Centre the slider / handbook on screen after a click
+    ├── audio.js            Background music, all sound effects, Sound on/off (sounds + volumes are listed at the top)
     ├── navigation.js       Esc closes the menu; lamp choice is remembered
     ├── hero.js             Typing tagline + random "Did you know?" fact
     ├── story-cards.js      Click to flip a card, Flip all / Flip all back
